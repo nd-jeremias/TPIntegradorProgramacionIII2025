@@ -1,8 +1,17 @@
 export class Product{
 
-    constructor(id, name, price, category, stock, image, status) {
+    /**
+     * @param {Number} id 
+     * @param {String} tittle 
+     * @param {Number} price 
+     * @param {String} category 
+     * @param {Number} stock 
+     * @param {String} image 
+     * @param {Boolean} status 
+     */
+    constructor(id, tittle, price, category, stock, image, status) {
         this.id = id;
-        this.name = name;
+        this.tittle = tittle;
         this.price = price;
         this.category = category;
         this.stock = stock;
@@ -61,7 +70,7 @@ export class Product{
     toString() {
         return `
             ID: ${this.id}, 
-            Nombre: ${this.name}, 
+            Nombre: ${this.tittle}, 
             Precio: ${this.price}, 
             Categoria: ${this.category}, 
             Stock: ${this.stock}, 

@@ -3,7 +3,8 @@
     // el nombre ingresado en el paso 2, 
     // la fecha de hoy 
     // el nombre de la empresa
-    // El sistema debe poder persistir en la base de datos el registro de las ventas realizadas exitosamente, junto con el nombre del usuario que las efectuó, la fecha y el precio total.
+    // El sistema debe poder persistir en la base de datos el registro de las ventas realizadas exitosamente,
+    //  junto con el nombre del usuario que las efectuó, la fecha y el precio total.
     // El sistema debe permitir descargar el ticket en PDF.
 
 // El administrador
