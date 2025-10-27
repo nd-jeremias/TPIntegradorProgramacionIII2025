@@ -34,7 +34,7 @@ CREATE TABLE `productos` (
   `imagen` VARCHAR(150) NULL,
   `stock` INT DEFAULT 0,
   `category` INT NOT NULL,
-  `status` BOOLEAN DEFAULT TRUE
+  `status` BOOLEAN DEFAULT TRUE,
   FOREIGN KEY (`category`) REFERENCES `categorias`(`id`)
 );
 
@@ -71,30 +71,48 @@ CREATE TABLE `discos` (
 -- =====================================
 --  Tabla VENTAS
 -- =====================================
--- DROP TABLE IF EXISTS `ventas`;
--- CREATE TABLE ventas (
---   `id` INT AUTO_INCREMENT PRIMARY KEY,
---   `cliente` VARCHAR(100) NOT NULL,
---   `fecha` DATETIME DEFAULT CURRENT_TIMESTAMP,
---   `total` DOUBLE NOT NULL
--- );
+DROP TABLE IF EXISTS `ventas`;
+CREATE TABLE ventas (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `cliente` VARCHAR(100) NOT NULL,
+  `fecha` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `total` DOUBLE NOT NULL
+);
 
 -- =====================================
 --  Tabla DETALLE_VENTA 
 -- =====================================
--- DROP TABLE IF EXISTS `detalle_venta`;
--- CREATE TABLE `detalle_venta` (
---   `id_venta` INT NOT NULL,
---   `id_producto` INT NOT NULL,
---   `cantidad` INT DEFAULT 1,
---   `precio_unitario` DOUBLE NOT NULL,
---   FOREIGN KEY (`id_venta`) REFERENCES `ventas`(`id`)
---     ON DELETE CASCADE
---     ON UPDATE CASCADE,
---   FOREIGN KEY (`id_producto`) REFERENCES `productos`(`id`)
---     ON DELETE CASCADE
---     ON UPDATE CASCADE
--- );
+DROP TABLE IF EXISTS `detalle_ventas`;
+CREATE TABLE `detalle_ventas` (
+  `id_venta` INT NOT NULL,
+  `id_producto` INT NOT NULL,
+  `cantidad` INT DEFAULT 1,
+  `precio_unitario` DOUBLE NOT NULL,
+  FOREIGN KEY (`id_venta`) REFERENCES `ventas`(`id`)
+     ON DELETE CASCADE
+     ON UPDATE CASCADE,
+  FOREIGN KEY (`id_producto`) REFERENCES `productos`(`id`)
+     ON DELETE CASCADE
+     ON UPDATE CASCADE
+);
+
+INSERT INTO `ventas` (`cliente`, `fecha`, `total`) VALUES
+('Nicolas', NOW(), 8923.30),
+('Julian', NOW(), 27752.40);
+
+INSERT INTO `detalle_venta` (`id_venta`, `id_producto`, `cantidad`, `precio_unitario`) VALUES
+(1, 51, 1, 8900.00),
+(1, 20, 1, 23.30),
+(2, 35, 2, 26.20),
+(2, 47, 1, 8700.00),
+(2, 10, 2, 8500.00);
+
+
+-- SELECT v.id AS id_venta, p.titulo, dv.precio_unitario, dv.cantidad
+-- FROM ventas v
+-- JOIN detalle_venta dv ON v.id = dv.id_venta
+-- JOIN productos p ON p.id = dv.id_producto
+-- WHERE v.id = 1;
 
 -- =====================================
 --  Tabla ADMINISTRADORES
