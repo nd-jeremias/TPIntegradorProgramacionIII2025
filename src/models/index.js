@@ -7,7 +7,7 @@ import { Ventas, DetalleVentas, Productos, Categorias, Libros, Discos } from './
 DetalleVentas.belongsTo(Ventas, { foreignKey: 'id_venta', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 Ventas.hasMany(DetalleVentas, { foreignKey: 'id_venta' });
 
-DetalleVenta.belongsTo(Productos, { foreignKey: 'id_producto', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
+DetalleVentas.belongsTo(Productos, { foreignKey: 'id_producto', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 Productos.hasMany(DetalleVentas, { foreignKey: 'id_producto' });
 
 // Relación: productos.category → categorias.id

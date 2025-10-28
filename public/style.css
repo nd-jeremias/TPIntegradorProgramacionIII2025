@@ -1,0 +1,26 @@
+body{
+    margin: 0;
+}
+
+header {
+    background-color: red;
+    width: 100%;
+    margin: 0;
+}
+
+section {
+    background-color: brown;
+}
+
+nav {
+    background-color: burlywood;
+}
+
+.card{
+    min-width: 100px;
+    margin: 10px;
+}
+
+footer{
+    background-color:teal
+}

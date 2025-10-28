@@ -5,6 +5,7 @@ import { sequelize }  from './src/database/index.js';
 
 import productRoutes from './src/routes/productRoute.js';
 import salesRoute from './src/routes/salesRoute.js';
+import adminRoutes from './src/routes/adminRoutes.js'
 
 import { seedData } from './src/database/initData.js';
 
@@ -26,6 +27,9 @@ app.get('/', (req, res) => {
 // API Routes
 app.use('/api/productos', productRoutes);
 app.use('/api/ventas', salesRoute);
+
+// Admin Routes
+app.use('/admin', adminRoutes);
 
 /* Archivos Estaticos */ 
 app.use(express.static('public'));
