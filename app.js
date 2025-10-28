@@ -20,9 +20,9 @@ app.set('views', './src/views');
 app.use(express.json());
 
 /* Rutas */
-app.get('/', (req, res) => {
-    res.send("Hello Word");
-});
+// app.get('/', (req, res) => {
+//     res.send("Hello Word");
+// });
 
 // API Routes
 app.use('/api/productos', productRoutes);
