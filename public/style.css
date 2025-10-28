@@ -1,26 +1,67 @@
-body{
+html, body{
     margin: 0;
+    height: 100%;
 }
 
 header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: red;
+    height: 15%;
     width: 100%;
     margin: 0;
+    padding: 1%;
+}
+
+main{
+    height: 75%;
+}
+
+nav {
+    display: flex;
+    background-color: burlywood;
+    justify-content: space-around;
+    height: 10%;
+}
+
+nav a{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    height: 100%;
+    width: 30%;
+    color: red;
+    padding: 1%;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: blueviolet;
 }
 
 section {
     background-color: brown;
+    height: 90%;
 }
 
-nav {
-    background-color: burlywood;
+#admin-section{
+    display: flex;
+    justify-content: center;
 }
 
-.card{
-    min-width: 100px;
-    margin: 10px;
+#admin-form{    
+    margin: 3%;
+    padding: 2%;
+    display: flex;
 }
 
 footer{
-    background-color:teal
+    background-color:teal;
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
