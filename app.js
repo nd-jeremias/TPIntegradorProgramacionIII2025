@@ -1,6 +1,13 @@
 // Repositorio: https://github.com/vitaccajulian/Parcial02-NicolasJeremias-JulianVitacca
 
 import express from 'express';
+
+import path from 'path';
+import { fileURLToPath } from 'url';
+// Define __dirname para el ámbito de módulos de ES
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 import { sequelize }  from './src/database/index.js';
 
 import productRoutes from './src/routes/productRoute.js';
@@ -20,19 +27,20 @@ app.set('views', './src/views');
 app.use(express.json());
 
 /* Rutas */
-// app.get('/', (req, res) => {
-//     res.send("Hello Word");
-// });
+app.get('/admin', function(req, res) {
+    res.render('pages/admin');
+});
 
 // API Routes
 app.use('/api/productos', productRoutes);
 app.use('/api/ventas', salesRoute);
 
 // Admin Routes
-app.use('/admin', adminRoutes);
+//app.use('/admin', adminRoutes);
 
 /* Archivos Estaticos */ 
-app.use(express.static('public'));
+// app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req,res) => {
     res.status(404).send('Lo sentimos, pagina no encontrada'); // ACA ARMAR EL 404

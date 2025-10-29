@@ -1,4 +1,12 @@
-// import Swal from '../node_modules/sweetalert2/src/sweetalert2.js'
+console.log("Bienvenido")
+
+const btn = document.getElementById("submitBtn");
+
+btn.addEventListener("click", function(event){
+    event.preventDefault()
+});
+
+    // import Swal from '../node_modules/sweetalert2/src/sweetalert2.js'
 
 // const btn = document.getElementById('btnAlert');
 
