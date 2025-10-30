@@ -1,4 +1,4 @@
-import { Productos, Discos, Libros } from "../models/exportModels.js"; // CAMBIAR A INDEX.JS CUANDO SE HAGA LA RELACION
+import { Productos, Discos, Libros, Categorias } from "../models/exportModels.js"; // CAMBIAR A INDEX.JS CUANDO SE HAGA LA RELACION
 
 export const getProducts = async (req, res) => {
 
@@ -6,7 +6,7 @@ export const getProducts = async (req, res) => {
         
         const productos = await Productos.findAll();
         res.send(productos);
-
+        
     } catch (error) {
         console.error( { message: 'Error al obtener productos: ', error } )
     }
@@ -45,11 +45,20 @@ export const disableProduct = async (req, res) => {
 
 export const createProduct = async (req, res) => {
     
-    const producto = req.body;
+    const {  titulo, precio, imagen, stock, categoria, estado, variableUno, variableDos, variableTres } = req.body;
 
-    try {        
-        const nuevoProducto = await Productos.create(
-        { titulo: producto.titulo, precio: producto.precio, imagen: producto.imagen, stock: producto.stock, categoria: producto.stock, estado: producto.estado },)
+    try {
+        
+        const nuevoProducto = await Productos.create( { titulo, precio, imagen, stock, categoria, estado} )
+        const idProducto = nuevoProducto.id
+        
+        if(categoria === "disco"){
+            await Discos.create( { idProducto, variableUno, variableDos, variableTres } )
+        }
+        if(categoria === "libro"){
+            await Libros.create( { idProducto, variableUno, variableDos, variableTres } )
+        }
+        
         res.status(201).json( { message: `Nuevo producto agregado. ID autogenerado: ${nuevoProducto.id}` } )
     } catch (error) {
         console.log({message: `Error al crear producto nuevo: ${error}`})

@@ -4,24 +4,24 @@ import { Ventas, DetalleVentas, Productos, Categorias, Libros, Discos } from './
 // Definir Relaciones
 
 // Relaciones DetalleVenta → Venta y Producto
-DetalleVentas.belongsTo(Ventas, { foreignKey: 'id_venta', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 Ventas.hasMany(DetalleVentas, { foreignKey: 'id_venta' });
+DetalleVentas.belongsTo(Ventas, { foreignKey: 'id_venta', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 
-DetalleVentas.belongsTo(Productos, { foreignKey: 'id_producto', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 Productos.hasMany(DetalleVentas, { foreignKey: 'id_producto' });
+DetalleVentas.belongsTo(Productos, { foreignKey: 'id_producto', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 
 // Relación: productos.category → categorias.id
-Productos.belongsTo(Categorias, { foreignKey: 'categorias' });
 Categorias.hasMany(Productos, { foreignKey: 'categorias' });
+Productos.belongsTo(Categorias, { foreignKey: 'categorias' });
 
 // Relación: libros.id_producto → productos.id
-Libros.belongsTo(Productos, { foreignKey: 'id_producto', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 Productos.hasOne(Libros, { foreignKey: 'id_producto' });
+Libros.belongsTo(Productos, { foreignKey: 'id_producto', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 
 // Relación: discos.id_producto → productos.id
-Discos.belongsTo(Productos, { foreignKey: 'id_producto', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 Productos.hasOne(Discos, { foreignKey: 'id_producto' });
+Discos.belongsTo(Productos, { foreignKey: 'id_producto', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 
 // exportar las relaciones echas
 
-export { Ventas, DetalleVentas, Productos, Categorias };
+export { Ventas, DetalleVentas, Productos, Categorias, Libros, Discos };

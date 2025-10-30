@@ -119,6 +119,11 @@ export async function seedData() {
             { id_producto: 51, autor: 'Stephen King', editorial: 'Viking Press', genero: 'Terror' }
         ])
 
+        // Insertar Categorias
+        await Categorias.bulkCreate([
+            { id: 1, nombre: 'Disco'},
+            { id: 2, nombre: 'Libro'}
+        ])
         // 3️⃣ Insertar ventas
         const ventas = await Ventas.bulkCreate([
             { cliente: 'Juan Pérez', fecha: new Date(), total: 40.00 },
