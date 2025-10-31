@@ -4,7 +4,18 @@ export const getProducts = async (req, res) => {
 
     try {
         
+        //const productos = await Productos.findAll( { include: Categorias } ); Esto me trae CATEGORIAS vacio
         const productos = await Productos.findAll();
+        const categorias = await Categorias.findAll();
+        // Se cambia numero de categoria por string(Revisar)
+        categorias.forEach(c => {
+            productos.forEach(p => {
+                if(c.id == p.categoria){
+                    p.categoria = c.nombre;
+                }
+            })
+        });
+
         res.send(productos);
         
     } catch (error) {
@@ -23,6 +34,24 @@ export const getOneProduct = async (req, res) => {
         console.log({message: `Error al obtener el producto id: ${id}: ${error}`})
     }
 
+}
+
+export const getDetailedProduct = async (req,res) => {
+    
+    const { id } = req.params;
+
+    try {
+        const producto = await Productos.findOne( 
+            {
+                where: { id:id },
+                include: [
+                    
+                ]
+            } )
+
+    } catch (error) {
+        console.log({message: `Error al obtener el detalle del producto id: ${id}: ${error}`})
+    }
 }
 
 export const disableProduct = async (req, res) => {

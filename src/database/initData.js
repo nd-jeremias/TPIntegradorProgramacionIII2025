@@ -6,6 +6,8 @@ export async function seedData() {
         // await sequelize.sync({ force: true });
         // console.log('🧱 Tablas sincronizadas correctamente.');
 
+        // HACER DROP TABLE DETALLE_VENTAS LIBROS DISCOS PRODUCTOS CATEGORIAS -- ESE ORDEN
+
         // 2️⃣ Insertar productos
         const productos = await Productos.bulkCreate([
         { titulo: 'Thriller', precio: 25.99, imagen: './src/data/img/Thriller', stock: 50, categoria: 1, estado: true },
