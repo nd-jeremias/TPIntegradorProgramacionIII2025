@@ -8,7 +8,7 @@ export const Productos = sequelize.define('Productos',
         precio: { type: DataTypes.DOUBLE, allowNull: false },
         imagen: { type: DataTypes.STRING(150), allowNull: true },
         stock: { type: DataTypes.INTEGER, defaultValue: 0 },
-        categoria: { type: DataTypes.INTEGER, allowNull: false },
+        id_categoria: { type: DataTypes.INTEGER, allowNull: false },
         estado: { type: DataTypes.BOOLEAN, defaultValue: true }
     },
     {

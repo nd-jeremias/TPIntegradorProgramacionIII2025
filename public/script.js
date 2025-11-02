@@ -1,8 +1,8 @@
 console.log("Bienvenido")
 
-const btn = document.getElementById("submitBtn");
+const submitBtn = document.getElementById("submitBtn");
 
-btn.addEventListener("click", function(event){
+submitBtn.addEventListener("click", function(event){
     event.preventDefault()
 });
 

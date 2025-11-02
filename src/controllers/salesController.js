@@ -12,20 +12,6 @@ export const getSales = async (req, res) => {
 }
 
 export const getOneSale = async (req, res) => {
-
-    const { id } = req.params
-
-    try {
-        
-        const venta = await Ventas.findOne( { where: { id:id } } )
-        res.send(venta);
-
-    } catch (error) {
-        console.error( { message: `Error al encontrar venta id ${id}: ${error}` } )
-    }
-}
-
-export const getDetailedSale = async (req, res) => {
     
     const { id } = req.params
 
@@ -39,11 +25,13 @@ export const getDetailedSale = async (req, res) => {
                         as: 'detalle', 
                         include: [ { model: Productos, as: 'producto', attributes: [ 'titulo']}],
                         attributes:[ 'cantidad', 'precio_unitario'] 
-                    } ] } );
+                    }
+                ]
+            });
 
         if (!venta) return res.status(404).json({ message: 'Venta no encontrada' });
         
-        // transformar formato
+        // Transformar formato
         const respuesta = {
             id: venta.id,
             cliente: venta.cliente,
@@ -55,10 +43,32 @@ export const getDetailedSale = async (req, res) => {
                 precio_unitario: d.precio_unitario
             }))
         };
-        
-        res.send(respuesta);
+
+        res.send(venta);
     } catch (error) {
         console.error(error)
     }
 
+}
+
+export const createSale = async (req, res) => {
+
+    const { cliente, total, detalle } = req.body
+
+    try {
+        
+        const venta = await Ventas.create( { cliente, total } );
+        const id = venta.id;
+
+        await DetalleVentas.bulkCreate( detalle.map((item) => ({
+            id_venta: id,
+            id_producto: item.id_producto,
+            cantidad: item.cantidad,
+            precio_unitario: item.precio_unitario,
+        })));
+        
+        res.status(201).json( { message: `Nueva venta registrada. ID autogenerado: ${id}` } )
+    } catch (error) {
+        res.status(500).json({ message: `Error al registrar venta: ${error.message}` });
+    }
 }

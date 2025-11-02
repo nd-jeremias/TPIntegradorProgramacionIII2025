@@ -1,5 +1,5 @@
 import express from 'express';
-import { getSales, getOneSale, getDetailedSale } from '../controllers/salesController.js';
+import { getSales, getOneSale, createSale} from '../controllers/salesController.js';
 
 const router = express.Router();
 
@@ -9,7 +9,6 @@ router.get('/', getSales)
 // Obtener venta por id
 router.get('/:id', getOneSale)
 
-// Obtener detalle de venta
-router.get('/detalle/:id', getDetailedSale)
+router.post('/', createSale)
 
 export default router;

@@ -11,8 +11,8 @@ Productos.hasMany(DetalleVentas, { foreignKey: 'id_producto' });
 DetalleVentas.belongsTo(Productos, { foreignKey: 'id_producto', as: 'producto', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 
 // Relación: productos.category → categorias.id
-Categorias.hasMany(Productos, { foreignKey: 'categorias' });
-Productos.belongsTo(Categorias, { foreignKey: 'categorias' });
+Categorias.hasMany(Productos, { foreignKey: 'id_categoria' });
+Productos.belongsTo(Categorias, { foreignKey: 'id_categoria' });
 
 // Relación: libros.id_producto → productos.id
 Productos.hasOne(Libros, { foreignKey: 'id_producto' });
@@ -22,6 +22,6 @@ Libros.belongsTo(Productos, { foreignKey: 'id_producto', onDelete: 'CASCADE', on
 Productos.hasOne(Discos, { foreignKey: 'id_producto' });
 Discos.belongsTo(Productos, { foreignKey: 'id_producto', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 
-// exportar las relaciones echas
+// exportar las relaciones hechas
 
 export { Ventas, DetalleVentas, Productos, Categorias, Libros, Discos };
