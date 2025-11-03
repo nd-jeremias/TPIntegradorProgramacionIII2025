@@ -1,11 +1,21 @@
-import { Productos, Discos, Libros, Categorias } from "../models/exportModels.js"; // CAMBIAR A INDEX.JS CUANDO SE HAGA LA RELACION
+import { Productos, Discos, Libros, Categorias } from "../models/index.js";
 
 export const getProducts = async (req, res) => {
 
     try {
-        
 
-        const productos = await Productos.findAll();
+        const productos = await Productos.findAll(
+            {
+                include: [
+                    {
+                      model: Categorias, 
+                      attributes: ['nombre']
+                    }
+                ],
+                raw: true, // Esto elimina la cascada, y devuelve el objeto plano
+                attributes: { exclude: ['id_categoria'] }
+            }
+        );
 
         res.send(productos);
         
@@ -20,15 +30,21 @@ export const getOneProduct = async (req, res) => {
     
     try {
         const producto = await Productos.findOne(
-            { 
+            {
                 where: { id: id },
-                attributes: { exclude: ['id_categoria']},
                 include: [
-                    { model: Discos, required: false, attributes: [ 'interprete', 'genero', 'año' ] },
-                    { model: Libros, required: false, attributes: [ 'autor', 'editorial', 'genero' ]}
+                    {
+                        model: Categorias,
+                        as: 'categoria',
+                        attributes: ['nombre']
+                    },
+                    { model: Discos, as: 'info_disco', attributes: [ 'interprete', 'genero', 'año' ] }, 
+                    { model: Libros, as: 'info_libro', attributes: [ 'autor', 'editorial', 'genero' ]}
                 ],
-            });
-        res.send(producto);
+                attributes: { exclude: ['id_categoria'] }
+            }
+        );
+
     } catch (error) {
         console.log({message: `Error al obtener el producto id: ${id}: ${error}`})
     }
