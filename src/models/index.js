@@ -12,14 +12,14 @@ DetalleVentas.belongsTo(Productos, { foreignKey: 'id_producto', as: 'producto', 
 
 // Relación: productos.category → categorias.id
 Categorias.hasMany(Productos, { foreignKey: 'id_categoria' });
-Productos.belongsTo(Categorias, { foreignKey: 'id_categoria' });
+Productos.belongsTo(Categorias, { foreignKey: 'id_categoria', as: 'categoria' });
 
 // Relación: libros.id_producto → productos.id
-Productos.hasOne(Libros, { foreignKey: 'id_producto' });
+Productos.hasOne(Libros, { foreignKey: 'id_producto', as: 'info_libro' });
 Libros.belongsTo(Productos, { foreignKey: 'id_producto', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 
 // Relación: discos.id_producto → productos.id
-Productos.hasOne(Discos, { foreignKey: 'id_producto' });
+Productos.hasOne(Discos, { foreignKey: 'id_producto', as: 'info_disco' });
 Discos.belongsTo(Productos, { foreignKey: 'id_producto', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 
 // exportar las relaciones hechas
