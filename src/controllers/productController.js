@@ -1,4 +1,4 @@
-import { Productos, Discos, Libros, Categorias } from "../models/exportModels.js"; // CAMBIAR A INDEX.JS CUANDO SE HAGA LA RELACION
+import { Productos, Discos, Libros, Categorias } from "../models/index.js"; // CAMBIAR A INDEX.JS CUANDO SE HAGA LA RELACION
 
 export const getProducts = async (req, res) => {
 

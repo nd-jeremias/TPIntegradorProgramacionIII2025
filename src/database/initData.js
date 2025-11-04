@@ -1,4 +1,4 @@
-import { Ventas, DetalleVentas, Productos, Categorias, Libros, Discos } from '../models/exportModels.js';
+import { Ventas, DetalleVentas, Productos, Categorias, Libros, Discos, Usuarios } from '../models/exportModels.js';
 
 export async function seedData() {
     try {
@@ -8,13 +8,13 @@ export async function seedData() {
 
         // HACER DROP TABLE DETALLE_VENTAS LIBROS DISCOS PRODUCTOS CATEGORIAS -- ESE ORDEN
 
-        // Insertar Categorias
+        // 1 Insertar Categorias
         await Categorias.bulkCreate([
             { nombre: 'Disco'},
             { nombre: 'Libro'}
         ])
 
-        // 2️⃣ Insertar productos
+        // 2 Insertar productos
         const productos = await Productos.bulkCreate([
         { titulo: 'Thriller', precio: 25.99, imagen: './src/data/img/Thriller', stock: 50, id_categoria: 1, estado: true },
         { titulo: 'Back_in_Black', precio: 22.50, imagen: './src/data/img/Back_in_Black', stock: 40, id_categoria: 1, estado: true },
@@ -70,6 +70,7 @@ export async function seedData() {
         ]);
         console.log('📦 Productos cargados correctamente.');
 
+        // 3 Insertar Discos
         const discos = await Discos.bulkCreate([
             { id_producto: 1, interprete: 'Michael Jackson', genero: 'Pop', año: 1982 },
             { id_producto: 2, interprete: 'AC/DC', genero: 'Rock', año: 1980 },
@@ -98,6 +99,7 @@ export async function seedData() {
             { id_producto: 25, interprete: 'Amy Winehouse', genero: 'Soul', año: 2000 }
         ]);
 
+        // 4 Insertar Libros
         const libros = await Libros.bulkCreate([
             { id_producto: 26, autor: 'George Orwell', editorial: 'Secker&Warburg', genero: 'Distopía' },
             { id_producto: 27, autor: 'Gabriel García Márquez', editorial: 'Sudamericana', genero: 'Realismo mágico' },
@@ -127,7 +129,7 @@ export async function seedData() {
             { id_producto: 51, autor: 'Stephen King', editorial: 'Viking Press', genero: 'Terror' }
         ])
 
-        // 3️⃣ Insertar ventas
+        // 5 Insertar ventas
         const ventas = await Ventas.bulkCreate([
             { cliente: 'Juan Pérez', total: 40.00 },
             { cliente: 'María Gómez', total: 127.00 },
@@ -137,7 +139,7 @@ export async function seedData() {
             ]);
         console.log('💰 Ventas registradas.');
         
-        // 4️⃣ Insertar detalle de ventas
+        // 6 Insertar detalle de ventas
         await DetalleVentas.bulkCreate([
             // Venta 1
             { id_venta: ventas[0].id, id_producto: productos[0].id, cantidad: 1, precio_unitario: productos[0].precio },
@@ -161,6 +163,11 @@ export async function seedData() {
             { id_venta: ventas[4].id, id_producto: productos[2].id, cantidad: 3, precio_unitario: productos[2].precio }
         ]);
         console.log('🧾 Detalle de ventas cargado correctamente.');
+
+        // 7 Insertar Usuarios(admin)
+        await Usuarios.bulkCreate([
+            { email: 'nicolas@email.com', nombre: 'Nicolas', apellido: 'Jeremias', contraseña: '$2b$10$X8IKXGfCWhiQoe34FqLf6eSIYfbRnLsCOHkVphwqpyKm9rRY1.sLO' },// password = '$2b$10$X8IKXGfCWhiQoe34FqLf6eSIYfbRnLsCOHkVphwqpyKm9rRY1.sLO' - salt = 10
+        ])
 
         console.log('✅ Base de datos inicializada con éxito.');
     } catch (error) {

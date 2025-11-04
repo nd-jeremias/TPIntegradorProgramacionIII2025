@@ -1,10 +1,15 @@
-console.log("Bienvenido")
-
 const submitBtn = document.getElementById("submitBtn");
+const pass = document.getElementById("formPassword");
 
-submitBtn.addEventListener("click", function(event){
+submitBtn.addEventListener("click", async function(event){
     event.preventDefault()
+    console.log("Pass: ", pass.value) // -- ACA ARMAR FETCH
 });
+
+
+// document.addEventListener('DOMContentLoaded', () => {
+    
+// });
 
     // import Swal from '../node_modules/sweetalert2/src/sweetalert2.js'
 

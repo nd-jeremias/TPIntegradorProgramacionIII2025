@@ -1,1 +1,0 @@
-// Aca va el middleware de lo que devuelve la ruta user
