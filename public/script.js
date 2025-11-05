@@ -1,44 +1,42 @@
-const submitBtn = document.getElementById("submitBtn");
-const pass = document.getElementById("formPassword");
+document.addEventListener("DOMContentLoaded", () => {
 
-submitBtn.addEventListener("click", async function(event){
-    event.preventDefault()
-    console.log("Pass: ", pass.value) // -- ACA ARMAR FETCH
+    const formLogin = document.getElementById("admin-form");
+
+    formLogin.addEventListener("submit", async (e) => {
+
+        e.preventDefault(); // Previene el envio por defecto
+
+        const email = document.getElementById("formEmail").value.trim();
+        const password = document.getElementById("formPassword").value.trim();
+
+        if (!email || !password) {
+            Swal.fire("Campos vacíos", "Completá email y contraseña", "warning");
+            return;
+        }
+
+        try {
+
+            const response = await fetch("/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                credentials: "include", // permite recibir cookies JWT
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || "Error al iniciar sesión");
+            }
+
+            Swal.fire("Bienvenido", "Inicio de sesión correcto", "success").then(
+                () => {
+                window.location.href = "/admin"; // o donde quieras redirigir al usuario
+                }
+            );
+        } catch (error) {
+            console.error("Error en login:", error);
+            Swal.fire("Error", error.message, "error");
+        }
+    });
 });
-
-
-// document.addEventListener('DOMContentLoaded', () => {
-    
-// });
-
-    // import Swal from '../node_modules/sweetalert2/src/sweetalert2.js'
-
-// const btn = document.getElementById('btnAlert');
-
-// btn.addEventListener('click',()=> {
-
-//     Swal.fire({
-//         title: 'Error!',
-//         text: 'Do you want to continue',
-//         icon: 'error',
-//         confirmButtonText: 'Cool'
-//       })
-// })
-// Confirmacion de borrar
-// Swal.fire({
-//   title: "Are you sure?",
-//   text: "You won't be able to revert this!",
-//   icon: "warning",
-//   showCancelButton: true,
-//   confirmButtonColor: "#3085d6",
-//   cancelButtonColor: "#d33",
-//   confirmButtonText: "Yes, delete it!"
-// }).then((result) => {
-//   if (result.isConfirmed) {
-//     Swal.fire({
-//       title: "Deleted!",
-//       text: "Your file has been deleted.",
-//       icon: "success"
-//     });
-//   }
-// });

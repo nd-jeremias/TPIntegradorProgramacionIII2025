@@ -1,12 +1,13 @@
 <section id="admin-section">
+    
     <div class="" id="select-container" >
         <a href="/ingresar" class="anchor-select  left <%= paginaActual === 'login' ? 'anchor-active' : '' %>">Iniciar sesión</a>
         <a href="/registrarse" class="anchor-select right <%= paginaActual === 'register' ? 'anchor-active' : '' %>">Crear cuenta</a>
     </div>
-    <!-- <h3 class="tittle-form">Ingrese sus datos</h3> -->
+    
     <h3 class="tittle-form"><%= modo === 'login' ? 'Iniciar sesión' : 'Crear cuenta' %></h3>
-    <!-- <form class="admin-form"> -->
-    <form class="admin-form" action="<%= modo === 'login' ? '/login' : '/register' %>" method="POST">
+
+    <form id="admin-form" action="<%= modo === 'login' ? '/login' : '/register' %>" method="POST">
         <% if (modo === 'registro') { %>
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>

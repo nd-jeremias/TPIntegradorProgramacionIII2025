@@ -140,7 +140,7 @@ section {
     justify-content: center;
 }
 
-.admin-form{
+#admin-form{
     background-color: var(--color-bg-secondary);
     box-shadow: 0 0 20px var(--color-shadow);
     width: 450px;
@@ -241,7 +241,7 @@ footer{
         padding: 0;
     }
 
-    .admin-form{
+    #admin-form{
         max-width: 450px;
         width: 80%;
     }
@@ -252,7 +252,7 @@ footer{
 }
 
 @media (max-width: 550px) {
-    .admin-form{
+    #admin-form{
         max-width: 450px;
         width: 90%;
     }

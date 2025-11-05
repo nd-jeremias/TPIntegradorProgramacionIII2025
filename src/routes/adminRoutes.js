@@ -4,6 +4,8 @@ import { disableProduct, updateProduct, createProduct } from '../controllers/pro
 const router = express.Router();
 //const verifyToken = require("../middleware/auth"); 
 
+router.get('/', ); // ARMAR ESTA RUTA PARA ADMIN DASHBOARD
+
 // Deshabilitar producto por id
 router.put('/:id', disableProduct);
 // router.put('/:id', verifyToken, disableProduct);
