@@ -9,6 +9,7 @@ export const getProducts = async (req, res) => {
                 include: [
                     {
                       model: Categorias, 
+                      as: 'categoria',
                       attributes: ['nombre']
                     }
                 ],
@@ -45,6 +46,7 @@ export const getOneProduct = async (req, res) => {
             }
         );
 
+        res.send(producto)
     } catch (error) {
         console.log({message: `Error al obtener el producto id: ${id}: ${error}`})
     }

@@ -80,7 +80,7 @@ export function verificarToken(req, res, next) {
         // Si faltan menos de 1 minutos para que expire, se renueva el token
         const ahora = Math.floor(Date.now() / 1000);
         if ((decoded.exp - ahora) < 60) {
-            const token = jwt.sign(
+            const nuevoToken = jwt.sign(
                 { email: decoded.email, nombre: decoded.nombre },
                 process.env.JWT_SECRET,
                 { expiresIn: (60 * 5) }

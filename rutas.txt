@@ -1,0 +1,33 @@
+/* Rutas de cliente */ (todas estas del front)
+  ('/');
+    |
+    |---> '/' - pagina principal/inicio
+    |---> '/ingresar' - pagina para login de administrador. espera: {email, contraseña} devuelve la cookie
+    |---> '/registrarse' - Registra un nuevo administrador(guarda en bbdd)espera: { email, nombre, apellido, contraseña }
+    |---> '/carrito' - listado de productos agregados(todavia no lo tengo armado)
+
+/*  API Routes */
+  ('/api/productos');
+    |
+    |---> '/' - GET = devuelve todos los productos
+    |---> '/:id' - GET = devuelve producto con id:id
+
+('/api/ventas');
+    |
+    |---> '/' - GET = devuelve todos las ventas
+    |---> '/:id' - GET = devuelve venta con id:id
+    |---> '/' - POST = envia una venta a registrar en bbdd. espera: {cliente, total, [detalle]} donde detalle = [id_producto, cantidad, precio_unitario]
+
+/* Middleware para autenticar */
+('/auth')
+    |
+    |---> '/registrarse' - registra nuevo administrador en bbdd. espera: { email, nombre, apellido, contraseña }
+    |---> '/ingresar' - hace login administrador. espera: { email, contraseña }. devuelve cookie con token
+    |---> '/salir' - hace logout. borra cookie
+
+('/admin')
+    |
+    |---> '/dashboard' - pagina principal de administrador. Lista los productos y tiene opciones de modificacion(front)
+    |---> '/id' - PUT - deshabilita un producto. Pone en false el estado. envia {id}
+    |---> '/update/id' - PUT - Modifica el producto id:id. espera: {titulo, precio, imagen, stock, categoria, estado}
+    |---> '/create' - POST - Crea un producto en bbdd.espera: {  titulo, precio, imagen, stock, id_categoria, estado, detalles } donde detalles = {interprete, genero, año} si es disco. {autor, editorial, genero} si es libro

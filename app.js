@@ -14,7 +14,10 @@ import { seedData } from './src/database/initData.js';
 import productRoutes from './src/routes/productRoute.js';
 import salesRoute from './src/routes/salesRoute.js';
 import adminRoutes from './src/routes/adminRoutes.js'
+import userRoutes from './src/routes/userRoutes.js'
 import auth, { verificarToken } from "./src/routes/auth.js";
+
+import cookieParser from 'cookie-parser';
 
 const app = express();
 const PORT = process.env.PORT;
@@ -23,23 +26,19 @@ const PORT = process.env.PORT;
 app.set('view engine', 'ejs');
 app.set('views', './src/views');
 
+/* Middlewares */
 app.use(express.json());
+app.use(cookieParser());
 
-/* Rutas Dinamicas */
-
-app.get('/ingresar', (req, res) => {
-    res.render('pages/admin', { modo: 'login', paginaActual: 'login' }); // MODIFICAR RUTA ADMIN EN VIEWS, USAR INGRESO O REGISTRO.
-});
-
-app.get('/registrarse', (req, res) => {
-    res.render('pages/admin', { modo: 'registro', paginaActual: 'register' });
-});
-
-app.use('/auth', auth);
+/* Rutas de cliente */
+app.use('/', userRoutes);
 
 /*  API Routes */
 app.use('/api/productos', productRoutes);
 app.use('/api/ventas', salesRoute);
+
+/* Ruta de acceso/autorizacion */
+app.use('/auth', auth);
 
 /* Admin Routes */
 app.use('/admin', verificarToken, adminRoutes);
