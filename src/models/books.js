@@ -7,7 +7,7 @@ export const Libros = sequelize.define('Libros',
         id_producto: { type: DataTypes.INTEGER, allowNull: false },
         autor: { type: DataTypes.STRING(100), allowNull: false },
         editorial: { type: DataTypes.STRING(45), allowNull: true },
-        genero: { type: DataTypes.STRING(45), allowNull: true }
+        id_genero: { type: DataTypes.INTEGER, allowNull: true }
     },
     {
         timestamps: false

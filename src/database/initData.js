@@ -1,4 +1,4 @@
-import { Ventas, DetalleVentas, Productos, Categorias, Libros, Discos, Usuarios } from '../models/exportModels.js';
+import { Ventas, DetalleVentas, Productos, Categorias, Libros, Discos, Usuarios, Generos } from '../models/exportModels.js';
 
 export async function seedData() {
     try {
@@ -69,67 +69,103 @@ export async function seedData() {
         { titulo: 'It', precio: 9800.00, imagen: './src/data/img/It.jpg', stock: 10, id_categoria: 2, estado: true }
         ]);
         console.log('📦 Productos cargados correctamente.');
-
-        // 3 Insertar Discos
+        
+        // 3 Insertar Generos
+        await Generos.bulkCreate([
+            { genero: 'Pop'},
+            { genero: 'Rock'},
+            { genero: 'Hard_Rock'},
+            { genero: 'Rock_Progresivo'},
+            { genero: 'Disco'},
+            { genero: 'Country_Pop'},
+            { genero: 'Soul'},
+            { genero: 'Rock_Alternativo'},
+            { genero: 'Grunge'},
+            { genero: 'Pop_Rock'},
+            { genero: 'Rock_Latino'},
+            { genero: 'Rap'},
+            { genero: 'Nu_Metal'},
+            { genero: 'Jazz_Pop'},
+            { genero: 'Distopía'},
+            { genero: 'Realismo_mágico'},
+            { genero: 'Aventura'},
+            { genero: 'Fábula'},
+            { genero: 'Romántico'},
+            { genero: 'Filosófico'},
+            { genero: 'Modernismo'},
+            { genero: 'Ciencia_ficción'},
+            { genero: 'Drama'},
+            { genero: 'Ficción'},
+            { genero: 'Épico'},
+            { genero: 'Gótico'},
+            { genero: 'Experimental'},
+            { genero: 'Existencialismo'},
+            { genero: 'Misterio'},
+            { genero: 'Inspiracional'},
+            { genero: 'Histórico'},
+            { genero: 'Terror'},
+        ])
+        
+        // 4 Insertar Discos
         const discos = await Discos.bulkCreate([
-            { id_producto: 1, interprete: 'Michael Jackson', genero: 'Pop', año: 1982 },
-            { id_producto: 2, interprete: 'AC/DC', genero: 'Rock', año: 1980 },
-            { id_producto: 3, interprete: 'Pink Floyd', genero: 'Rock-Progresivo', año: 1973 },
-            { id_producto: 4, interprete: 'Whitney Houston', genero: 'Pop', año: 1992 },
-            { id_producto: 5, interprete: 'Fleetwood Mac', genero: 'Rock', año: 1977 },
-            { id_producto: 6, interprete: 'Bee Gees', genero: 'Disco', año: 1977 },
-            { id_producto: 7, interprete: 'Eagles', genero: 'Rock', año: 1976 },
-            { id_producto: 8, interprete: 'Eagles', genero: 'Rock', año: 1976 },
-            { id_producto: 9, interprete: 'Shania Twain', genero: 'Country-Pop', año: 1997 },
-            { id_producto: 10, interprete: 'Adele', genero: 'Soul', año: 2011 },
-            { id_producto: 11, interprete: 'Michael Jackson', genero: 'Pop', año: 1987 },
-            { id_producto: 12, interprete: 'Led Zeppelin', genero: 'Rock', año: 1971 },
-            { id_producto: 13, interprete: 'Alanis Morissette', genero: 'Rock-Alternativo', año: 1995 },
-            { id_producto: 14, interprete: 'The Beatles', genero: 'Rock', año: 1969 },
-            { id_producto: 15, interprete: 'Bruce Springsteen', genero: 'Rock', año: 1984 },
-            { id_producto: 16, interprete: 'Nirvana', genero: 'Grunge', año: 1991 },
-            { id_producto: 17, interprete: 'Guns N’ Roses', genero: 'Hard Rock', año: 1987 },
-            { id_producto: 18, interprete: 'The Beatles', genero: 'Pop-Rock', año: 2000 },
-            { id_producto: 19, interprete: 'Santana', genero: 'Rock-Latino', año: 1999 },
-            { id_producto: 20, interprete: 'Eminem', genero: 'Rap', año: 2002 },
-            { id_producto: 21, interprete: 'Linkin Park', genero: 'Nu-Metal', año: 2000 },
-            { id_producto: 22, interprete: 'Britney Spears', genero: 'Pop', año: 2000 },
-            { id_producto: 23, interprete: 'Norah Jones', genero: 'Jazz-Pop', año: 2002 },
-            { id_producto: 24, interprete: 'Celine Dion', genero: 'Pop', año: 1996 },
-            { id_producto: 25, interprete: 'Amy Winehouse', genero: 'Soul', año: 2000 }
+            { id_producto: 1, interprete: 'Michael Jackson', id_genero: 1, año: 1982 },
+            { id_producto: 2, interprete: 'AC/DC', id_genero: 2, año: 1980 },
+            { id_producto: 3, interprete: 'Pink Floyd', id_genero: 4, año: 1973 },
+            { id_producto: 4, interprete: 'Whitney Houston', id_genero: 1, año: 1992 },
+            { id_producto: 5, interprete: 'Fleetwood Mac', id_genero: 2, año: 1977 },
+            { id_producto: 6, interprete: 'Bee Gees', id_genero: 5, año: 1977 },
+            { id_producto: 7, interprete: 'Eagles', id_genero: 2, año: 1976 },
+            { id_producto: 8, interprete: 'Eagles', id_genero: 2, año: 1976 },
+            { id_producto: 9, interprete: 'Shania Twain', id_genero: 6, año: 1997 },
+            { id_producto: 10, interprete: 'Adele', id_genero: 7, año: 2011 },
+            { id_producto: 11, interprete: 'Michael Jackson', id_genero: 1, año: 1987 },
+            { id_producto: 12, interprete: 'Led Zeppelin', id_genero: 2, año: 1971 },
+            { id_producto: 13, interprete: 'Alanis Morissette', id_genero: 8, año: 1995 },
+            { id_producto: 14, interprete: 'The Beatles', id_genero: 2, año: 1969 },
+            { id_producto: 15, interprete: 'Bruce Springsteen', id_genero: 2, año: 1984 },
+            { id_producto: 16, interprete: 'Nirvana', id_genero: 9, año: 1991 },
+            { id_producto: 17, interprete: 'Guns N’ Roses', id_genero: 3, año: 1987 },
+            { id_producto: 18, interprete: 'The Beatles', id_genero: 10, año: 2000 },
+            { id_producto: 19, interprete: 'Santana', id_genero: 11, año: 1999 },
+            { id_producto: 20, interprete: 'Eminem', id_genero: 12, año: 2002 },
+            { id_producto: 21, interprete: 'Linkin Park', id_genero: 13, año: 2000 },
+            { id_producto: 22, interprete: 'Britney Spears', id_genero: 1, año: 2000 },
+            { id_producto: 23, interprete: 'Norah Jones', id_genero: 14, año: 2002 },
+            { id_producto: 24, interprete: 'Celine Dion', id_genero: 1, año: 1996 },
+            { id_producto: 25, interprete: 'Amy Winehouse', id_genero: 7, año: 2000 }
         ]);
-
-        // 4 Insertar Libros
+        
+        // 5 Insertar Libros
         const libros = await Libros.bulkCreate([
-            { id_producto: 26, autor: 'George Orwell', editorial: 'Secker&Warburg', genero: 'Distopía' },
-            { id_producto: 27, autor: 'Gabriel García Márquez', editorial: 'Sudamericana', genero: 'Realismo mágico' },
-            { id_producto: 28, autor: 'Miguel de Cervantes', editorial: 'Francisco de Robles', genero: 'Aventura' },
-            { id_producto: 29, autor: 'Antoine de Saint-Exupéry', editorial: 'Reynal & Hitchcock', genero: 'Fábula' },
-            { id_producto: 30, autor: 'Fiódor Dostoyevski', editorial: 'The Russian Messenger', genero: 'Drama' },
-            { id_producto: 31, autor: 'Jane Austen', editorial: 'T. Egerton', genero: 'Romántico' },
-            { id_producto: 32, autor: 'Marcel Proust', editorial: 'Grasset', genero: 'Filosófico' },
-            { id_producto: 33, autor: 'James Joyce', editorial: 'Sylvia Beach', genero: 'Modernismo' },
-            { id_producto: 34, autor: 'Ray Bradbury', editorial: 'Ballantine Books', genero: 'Ciencia ficción' },
-            { id_producto: 35, autor: 'Harper Lee', editorial: 'J. B. Lippincott & Co.', genero: 'Drama' },
-            { id_producto: 36, autor: 'F. Scott Fitzgerald', editorial: "Charles Scribner's Sons", genero: 'Ficción' },
-            { id_producto: 37, autor: 'Victor Hugo', editorial: 'A. Lacroix', genero: 'Histórico' },
-            { id_producto: 38, autor: 'Homero', editorial: 'Antigua Grecia', genero: 'Épico' },
-            { id_producto: 39, autor: 'Homero', editorial: 'Antigua Grecia', genero: 'Épico' },
-            { id_producto: 40, autor: 'Ernest Hemingway', editorial: "Charles Scribner's Sons", genero: 'Aventura' },
-            { id_producto: 41, autor: 'Oscar Wilde', editorial: 'Ward, Lock & Co.', genero: 'Gótico' },
-            { id_producto: 42, autor: 'Julio Cortázar', editorial: 'Sudamericana', genero: 'Experimental' },
-            { id_producto: 43, autor: 'Franz Kafka', editorial: 'Kurt Wolff', genero: 'Existencialismo' },
-            { id_producto: 44, autor: 'Herman Melville', editorial: 'Harper & Brothers', genero: 'Aventura' },
-            { id_producto: 45, autor: 'Umberto Eco', editorial: 'Bompiani', genero: 'Misterio' },
-            { id_producto: 46, autor: 'Carlos Ruiz Zafón', editorial: 'Planeta', genero: 'Misterio' },
-            { id_producto: 47, autor: 'Paulo Coelho', editorial: 'HarperTorch', genero: 'Inspiracional' },
-            { id_producto: 48, autor: 'Bram Stoker', editorial: 'Archibald Constable', genero: 'Terror' },
-            { id_producto: 49, autor: 'Mary Shelley', editorial: 'Lackington, Hughes, Harding, Mavor & Jones', genero: 'Terror' },
-            { id_producto: 50, autor: 'Ken Follett', editorial: 'Macmillan', genero: 'Histórico' },
-            { id_producto: 51, autor: 'Stephen King', editorial: 'Viking Press', genero: 'Terror' }
+            { id_producto: 26, autor: 'George Orwell', editorial: 'Secker&Warburg', id_genero: 15 },
+            { id_producto: 27, autor: 'Gabriel García Márquez', editorial: 'Sudamericana', id_genero: 16 },
+            { id_producto: 28, autor: 'Miguel de Cervantes', editorial: 'Francisco de Robles', id_genero: 17 },
+            { id_producto: 29, autor: 'Antoine de Saint-Exupéry', editorial: 'Reynal & Hitchcock', id_genero: 18 },
+            { id_producto: 30, autor: 'Fiódor Dostoyevski', editorial: 'The Russian Messenger', id_genero: 23 },
+            { id_producto: 31, autor: 'Jane Austen', editorial: 'T. Egerton', id_genero: 19 },
+            { id_producto: 32, autor: 'Marcel Proust', editorial: 'Grasset', id_genero: 20 },
+            { id_producto: 33, autor: 'James Joyce', editorial: 'Sylvia Beach', id_genero: 21 },
+            { id_producto: 34, autor: 'Ray Bradbury', editorial: 'Ballantine Books', id_genero: 22 },
+            { id_producto: 35, autor: 'Harper Lee', editorial: 'J. B. Lippincott & Co.', id_genero: 23 },
+            { id_producto: 36, autor: 'F. Scott Fitzgerald', editorial: "Charles Scribner's Sons", id_genero: 24 },
+            { id_producto: 37, autor: 'Victor Hugo', editorial: 'A. Lacroix', id_genero: 31 },
+            { id_producto: 38, autor: 'Homero', editorial: 'Antigua Grecia', id_genero: 25 },
+            { id_producto: 39, autor: 'Homero', editorial: 'Antigua Grecia', id_genero: 25 },
+            { id_producto: 40, autor: 'Ernest Hemingway', editorial: "Charles Scribner's Sons", id_genero: 17 },
+            { id_producto: 41, autor: 'Oscar Wilde', editorial: 'Ward, Lock & Co.', id_genero: 26 },
+            { id_producto: 42, autor: 'Julio Cortázar', editorial: 'Sudamericana', id_genero: 27 },
+            { id_producto: 43, autor: 'Franz Kafka', editorial: 'Kurt Wolff', id_genero: 28 },
+            { id_producto: 44, autor: 'Herman Melville', editorial: 'Harper & Brothers', id_genero: 17 },
+            { id_producto: 45, autor: 'Umberto Eco', editorial: 'Bompiani', id_genero: 29 },
+            { id_producto: 46, autor: 'Carlos Ruiz Zafón', editorial: 'Planeta', id_genero: 29 },
+            { id_producto: 47, autor: 'Paulo Coelho', editorial: 'HarperTorch', id_genero: 30 },
+            { id_producto: 48, autor: 'Bram Stoker', editorial: 'Archibald Constable', id_genero: 32 },
+            { id_producto: 49, autor: 'Mary Shelley', editorial: 'Lackington, Hughes, Harding, Mavor & Jones', id_genero: 32 },
+            { id_producto: 50, autor: 'Ken Follett', editorial: 'Macmillan', id_genero: 31 },
+            { id_producto: 51, autor: 'Stephen King', editorial: 'Viking Press', id_genero: 32 }
         ])
 
-        // 5 Insertar ventas
+        // 6 Insertar ventas
         const ventas = await Ventas.bulkCreate([
             { cliente: 'Juan Pérez', total: 40.00 },
             { cliente: 'María Gómez', total: 127.00 },
@@ -139,7 +175,7 @@ export async function seedData() {
             ]);
         console.log('💰 Ventas registradas.');
         
-        // 6 Insertar detalle de ventas
+        // 7 Insertar detalle de ventas
         await DetalleVentas.bulkCreate([
             // Venta 1
             { id_venta: ventas[0].id, id_producto: productos[0].id, cantidad: 1, precio_unitario: productos[0].precio },
@@ -164,7 +200,7 @@ export async function seedData() {
         ]);
         console.log('🧾 Detalle de ventas cargado correctamente.');
 
-        // 7 Insertar Usuarios(admin)
+        // 8 Insertar Usuarios(admin)
         await Usuarios.bulkCreate([
             { email: 'nicolas@email.com', nombre: 'Nicolas', apellido: 'Jeremias', contraseña: '$2b$10$X8IKXGfCWhiQoe34FqLf6eSIYfbRnLsCOHkVphwqpyKm9rRY1.sLO' },// password = '$2b$10$X8IKXGfCWhiQoe34FqLf6eSIYfbRnLsCOHkVphwqpyKm9rRY1.sLO' - salt = 10
         ])

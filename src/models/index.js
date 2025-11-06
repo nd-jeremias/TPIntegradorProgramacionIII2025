@@ -1,5 +1,5 @@
 // importar las tablas a relacionar
-import { Ventas, DetalleVentas, Productos, Categorias, Libros, Discos } from './exportModels.js'
+import { Ventas, DetalleVentas, Productos, Categorias, Libros, Discos, Generos } from './exportModels.js'
 
 // Definir Relaciones
 
@@ -22,6 +22,12 @@ Libros.belongsTo(Productos, { foreignKey: 'id_producto', onDelete: 'CASCADE', on
 Productos.hasOne(Discos, { foreignKey: 'id_producto', as: 'info_disco' });
 Discos.belongsTo(Productos, { foreignKey: 'id_producto', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 
+// Relación: Productos → Generos
+Discos.belongsTo(Generos, { foreignKey: 'id_genero', as: 'genero'});
+Generos.hasMany(Discos, { foreignKey: 'id_genero', as: 'disco'});
+Libros.belongsTo(Generos, { foreignKey: 'id_genero', as: 'genero'});
+Generos.hasMany(Libros, { foreignKey: 'id_genero', as: 'libro'});
+
 // exportar las relaciones hechas
 
-export { Ventas, DetalleVentas, Productos, Categorias, Libros, Discos };
+export { Ventas, DetalleVentas, Productos, Categorias, Libros, Discos, Generos };

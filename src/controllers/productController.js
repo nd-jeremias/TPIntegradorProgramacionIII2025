@@ -1,4 +1,4 @@
-import { Productos, Discos, Libros, Categorias } from "../models/index.js"; // CAMBIAR A INDEX.JS CUANDO SE HAGA LA RELACION
+import { Productos, Discos, Libros, Categorias, Generos } from "../models/index.js";
 
 export const getProducts = async (req, res) => {
 
@@ -11,7 +11,7 @@ export const getProducts = async (req, res) => {
                       model: Categorias, 
                       as: 'categoria',
                       attributes: ['nombre']
-                    }
+                    },
                 ],
                 raw: true, // Esto elimina la cascada, y devuelve el objeto plano
                 attributes: { exclude: ['id_categoria'] }
@@ -39,8 +39,21 @@ export const getOneProduct = async (req, res) => {
                         as: 'categoria',
                         attributes: ['nombre']
                     },
-                    { model: Discos, as: 'info_disco', attributes: [ 'interprete', 'genero', 'año' ] }, 
-                    { model: Libros, as: 'info_libro', attributes: [ 'autor', 'editorial', 'genero' ]}
+                    //{ model: Discos, required: false, as: 'info_disco', attributes: [ 'interprete', 'genero', 'año' ] }, 
+                    {
+                        model: Discos,
+                        required: false,
+                        as: 'info_disco',
+                        attributes: ['interprete', 'año'],
+                        include: [
+                            {
+                                model: Generos,
+                                attributes: ['genero'],
+                                as: 'genero'
+                            }
+                        ]
+                    },
+                    { model: Libros, required: false, as: 'info_libro', attributes: [ 'autor', 'editorial' ], include: [ { model:Generos, attributes: ['genero'], as: 'genero' } ] }
                 ],
                 attributes: { exclude: ['id_categoria'] }
             }
