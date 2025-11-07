@@ -2,6 +2,35 @@ import express from 'express';
 
 const router = express.Router();
 
+import {Ticket} from '../classes/Ticket.js';
+
+const getVentaById = async (id) => {
+    return {
+      id: 1,
+      cliente: "Juan Pérez",
+      total: 40,
+      fecha: "2025-11-07T12:43:21.000Z",
+      detalle: [
+        { cantidad: 1, precio_unitario: 25.99, producto: { titulo: "Thriller" } },
+        { cantidad: 1, precio_unitario: 27.8, producto: { titulo: "The_Dark_Side_of_the_Moon" } }
+      ]
+    };
+  };
+  
+router.get('/ticket', async (req, res) => {
+    const venta = await getVentaById(req.params.id);
+
+    const ticket = new Ticket(
+        venta.id,
+        venta.cliente,
+        venta.total,
+        venta.fecha,
+        venta.detalle
+    );
+
+    res.render('pages/ticket', { htmlTicket: ticket.toHTML() });
+})
+
 router.get('/', (req, res) => {
     res.render('pages/bienvenida');
 });

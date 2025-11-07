@@ -7,20 +7,20 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault(); // Previene el envio por defecto
 
         const email = document.getElementById("formEmail").value.trim();
-        const password = document.getElementById("formPassword").value.trim();
+        const contraseña = document.getElementById("formPassword").value.trim();
 
-        if (!email || !password) {
+        if (!email || !contraseña) {
             Swal.fire("Campos vacíos", "Completá email y contraseña", "warning");
             return;
         }
 
         try {
 
-            const response = await fetch("/auth/login", {
+            const response = await fetch("/auth/ingresar", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include", // permite recibir cookies JWT
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ email, contraseña }),
             });
 
             const data = await response.json();

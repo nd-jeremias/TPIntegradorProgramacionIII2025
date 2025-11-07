@@ -11,11 +11,13 @@ const __dirname = path.dirname(__filename);
 import { sequelize } from './src/database/index.js';
 import { seedData } from './src/database/initData.js';
 
+// Empaquetar rutas en un solo export/import
 import productRoutes from './src/routes/productRoute.js';
 import salesRoute from './src/routes/salesRoute.js';
 import adminRoutes from './src/routes/adminRoutes.js'
 import userRoutes from './src/routes/userRoutes.js'
-import auth, { verificarToken } from "./src/routes/auth.js";
+import auth from "./src/routes/auth.js";
+
 
 import cookieParser from 'cookie-parser';
 
@@ -27,6 +29,7 @@ app.set('view engine', 'ejs');
 app.set('views', './src/views');
 
 /* Middlewares */
+import { verificarToken } from "./src/middleware/verifyToken.js";
 app.use(express.json());
 app.use(cookieParser());
 

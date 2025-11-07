@@ -47,7 +47,6 @@ npm start
 | **ejs**           | Motor de plantillas para renderizar vistas dinámicas |
 | **path**          | Gestión de rutas de archivos                         |
 | **nodemon** (dev) | Reinicio automático del servidor en desarrollo       |
-| ----------------- | ---------------------------------------------------- |
 
 ## 🔐 Autenticación (JWT + Cookies)
 
@@ -93,7 +92,6 @@ Manejadas desde `public/` (HTML, CSS, JS) y EJS para vistas dinámicas.
 | **POST** | `/auth/registrarse` | Registra un nuevo administrador en la base de datos | `{ email, nombre, apellido, contraseña }` | `{ message, usuario }`                  |
 | **POST** | `/auth/ingresar`    | Inicia sesión de administrador                      | `{ email, contraseña }`                   | Cookie `token` + `{ message, usuario }` |
 | **POST** | `/auth/salir`       | Cierra sesión y elimina la cookie                   | *(vacío)*                                 | `{ message: "Sesión cerrada" }`         |
-| -------- | ------------------- | --------------------------------------------------- | ----------------------------------------- | --------------------------------------- |
 
 ### 📦 Productos (`/api/productos`)
 
@@ -101,7 +99,6 @@ Manejadas desde `public/` (HTML, CSS, JS) y EJS para vistas dinámicas.
 | ------- | -------------------- | ---------------------------------------- | --------- | ------------------------------------------------------- |
 | **GET** | `/api/productos/`    | Lista todos los productos disponibles    | *(vacío)* | `[ { id, titulo, precio, stock, estado } ]`             |
 | **GET** | `/api/productos/:id` | Obtiene un producto específico por su ID | *(vacío)* | `{ id, titulo, precio, stock, estado, [detalles] }`     |
-| ------- | -------------------- | ---------------------------------------- | --------- | ------------------------------------------------------- |
 
 > Estas rutas son **públicas**, no requieren autenticación.
 
@@ -112,7 +109,6 @@ Manejadas desde `public/` (HTML, CSS, JS) y EJS para vistas dinámicas.
 | **GET**  | `/api/ventas/`    | Devuelve todas las ventas registradas | *(vacío)*                                                                     | `[ { id, cliente, total, fecha } ]`             |
 | **GET**  | `/api/ventas/:id` | Devuelve una venta específica         | *(vacío)*                                                                     | `{ id, cliente, total, fecha, detalle: [...] }` |
 | **POST** | `/api/ventas/`    | Registra una nueva venta              | `{ cliente, total, detalle: [ { id_producto, cantidad, precio_unitario } ] }` | `{ message, venta }`                            |
-| -------- | ----------------- | ------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------- |
 
 ### 🧑‍💼 Administración (`/admin`)
 
@@ -125,7 +121,6 @@ Manejadas desde `public/` (HTML, CSS, JS) y EJS para vistas dinámicas.
 | **PUT**  | `/admin/:id`        | Deshabilita un producto (soft delete)                      | `{ id }`                                                            | `{ mensaje, producto }` |
 | **PUT**  | `/admin/update/:id` | Actualiza un producto existente                            | `{ titulo, precio, imagen, stock, id_categoria, estado, detalles }` | `{ mensaje, producto }` |
 | **POST** | `/admin/create`     | Crea un nuevo producto                                     | `{ titulo, precio, imagen, stock, id_categoria, estado, detalles }` | `{ mensaje, producto }` |
-| -------- | ------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------- | ----------------------- |
 
 ## 🧱 Estructura de carpetas
 
