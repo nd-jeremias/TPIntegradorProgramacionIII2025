@@ -1,9 +1,12 @@
 import express from 'express';
 import { disableProduct, updateProduct, createProduct } from '../controllers/productController.js'
+import { dashboard } from '../controllers/adminController.js'
 
 const router = express.Router();
 
-//router.get('/dashboard', ); // ARMAR ESTA RUTA PARA ADMIN DASHBOARD
+router.get('/dashboard', (req, res) => {
+    res.render('pages/dashboard');
+});
 
 // Deshabilitar producto por id
 router.put('/:id', disableProduct);

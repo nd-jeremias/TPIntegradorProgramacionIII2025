@@ -1,8 +1,8 @@
 import express from 'express';
 
 const router = express.Router();
-
-import {Ticket} from '../classes/Ticket.js';
+// borrar este bloque
+import {Ticket} from '../../public/classes/Ticket.js';
 
 const getVentaById = async (id) => {
     return {
@@ -30,7 +30,7 @@ router.get('/ticket', async (req, res) => {
 
     res.render('pages/ticket', { htmlTicket: ticket.toHTML() });
 })
-
+// hasta aca
 router.get('/', (req, res) => {
     res.render('pages/bienvenida');
 });

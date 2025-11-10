@@ -13,7 +13,7 @@ export const getProducts = async (req, res) => {
                       attributes: ['nombre']
                     },
                 ],
-                raw: true, // Esto elimina la cascada, y devuelve el objeto plano
+                // raw: true, Esto elimina la cascada, y devuelve el objeto plano
                 attributes: { exclude: ['id_categoria'] }
             }
         );

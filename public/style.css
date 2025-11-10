@@ -129,6 +129,14 @@ section {
     align-items: center;
 }
 
+#container {
+    display: grid;
+}
+
+.card-img-top {
+    min-height: 150px;
+}
+
 #select-container{
     display: flex;
     flex-direction: row;
@@ -140,7 +148,7 @@ section {
     justify-content: center;
 }
 
-#admin-form{
+#admin-form, #name-form{
     background-color: var(--color-bg-secondary);
     box-shadow: 0 0 20px var(--color-shadow);
     width: 450px;

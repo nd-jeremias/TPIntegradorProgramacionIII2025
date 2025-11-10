@@ -3,6 +3,9 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
 import { Usuarios } from '../models/users.js';
 
+import dotenv from "dotenv";
+dotenv.config();
+
 const SALT = 10;
 
 const router = express.Router();
@@ -59,7 +62,7 @@ router.post('/ingresar', async (req, res) => {
         });
 
         res.json({ message: 'Login exitoso', usuario: usuario.nombre });
-        // AGREGAR EL REDIRECCIONAMIENTO
+        
     } catch (error) {
         console.error('Error en login:', error);
         res.status(500).json({ error: 'Error interno del servidor' });
@@ -70,39 +73,5 @@ router.post('/salir', (req, res) => {
     res.clearCookie('token');
     res.json({ message: 'Sesion finalizada' });
 });
-
-// // MIDDLEWARE de autenticación
-// export function verificarToken(req, res, next) {
-    
-//     const token = req.cookies.token;
-//     if (!token) return res.status(401).json({ message: "Token no encontrado" });
-
-//     try {
-//         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        
-//         // Si faltan menos de 1 minutos para que expire, se renueva el token
-//         const ahora = Math.floor(Date.now() / 1000);
-//         if ((decoded.exp - ahora) < 60) {
-//             const nuevoToken = jwt.sign(
-//                 { email: decoded.email, nombre: decoded.nombre },
-//                 process.env.JWT_SECRET,
-//                 { expiresIn: (60 * 5) }
-//             )
-//         res.cookie('token', nuevoToken, 
-//             {
-//                 httpOnly: true,
-//                 secure: false,
-//                 sameSite: 'strict',
-//                 maxAge: ( 1000 * 60 * 5 )
-//             });
-//         }
-
-//         req.usuario = decoded;
-//         next();
-//     } catch (error) {
-//         return res.status(401).json({ message: "Token inválido o expirado" });
-//     }
-// }
-
 
 export default router;

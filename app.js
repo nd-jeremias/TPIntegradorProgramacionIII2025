@@ -2,35 +2,37 @@
 
 import express from 'express';
 
+const app = express();
+const PORT = process.env.PORT;
+
+/* Cross-Origin Resource Sharing */
+import cors from 'cors';
+app.use(cors());
+
 // Define __dirname para el ámbito de módulos de ES
 import path from 'path';
 import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Sequelize
 import { sequelize } from './src/database/index.js';
 import { seedData } from './src/database/initData.js';
 
-// Empaquetar rutas en un solo export/import
-import productRoutes from './src/routes/productRoute.js';
-import salesRoute from './src/routes/salesRoute.js';
-import adminRoutes from './src/routes/adminRoutes.js'
-import userRoutes from './src/routes/userRoutes.js'
-import auth from "./src/routes/auth.js";
-
-
-import cookieParser from 'cookie-parser';
-
-const app = express();
-const PORT = process.env.PORT;
+// Rutas
+import { adminRoutes, authRoutes, productRoutes, salesRoutes, userRoutes, } from './src/routes/index.js';
 
 /* View Engine */
 app.set('view engine', 'ejs');
 app.set('views', './src/views');
 
 /* Middlewares */
-import { verificarToken } from "./src/middleware/verifyToken.js";
+
 app.use(express.json());
+// Verifica la cookie para iniciar/mantener sesion
+import { verificarToken } from "./src/middleware/verifyToken.js";
+// CookieParser 
+import cookieParser from 'cookie-parser';
 app.use(cookieParser());
 
 /* Rutas de cliente */
@@ -38,10 +40,10 @@ app.use('/', userRoutes);
 
 /*  API Routes */
 app.use('/api/productos', productRoutes);
-app.use('/api/ventas', salesRoute);
+app.use('/api/ventas', salesRoutes);
 
 /* Ruta de acceso/autorizacion */
-app.use('/auth', auth);
+app.use('/auth', authRoutes);
 
 /* Admin Routes */
 app.use('/admin', verificarToken, adminRoutes);
@@ -49,12 +51,13 @@ app.use('/admin', verificarToken, adminRoutes);
 /* Archivos Estaticos */
 app.use(express.static(path.join(__dirname, 'public')));
 
+/* Respuesta 404 */
 app.use((req, res) => {
     res.status(404).send('Lo sentimos, pagina no encontrada'); // ACA ARMAR EL 404
 })
 
 sequelize
-    .sync({ force: true }) // El .sync se podria poner en seedData?
+    .sync({ force: true })
     .then(() => seedData())
     .then(() => {
         app.listen(PORT, () => {

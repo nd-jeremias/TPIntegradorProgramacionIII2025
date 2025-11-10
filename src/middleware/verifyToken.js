@@ -1,9 +1,12 @@
+import jwt from 'jsonwebtoken';
+
 export function verificarToken(req, res, next) {
     
     const token = req.cookies.token;
     if (!token) return res.status(401).json({ message: "Token no encontrado" });
-
+    
     try {
+        
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         
         // Si faltan menos de 1 minutos para que expire, se renueva el token
@@ -14,11 +17,12 @@ export function verificarToken(req, res, next) {
                 process.env.JWT_SECRET,
                 { expiresIn: (60 * 5) }
             )
+
         res.cookie('token', nuevoToken, 
             {
                 httpOnly: true,
                 secure: false,
-                sameSite: 'strict',
+                sameSite: 'lax',
                 maxAge: ( 1000 * 60 * 5 )
             });
         }
