@@ -64,7 +64,7 @@ export const createSale = async (req, res) => {
             id_venta: id,
             id_producto: item.id_producto,
             cantidad: item.cantidad,
-            precio_unitario: item.precio_unitario,
+            precio_unitario: item.precio,
         })));
         
         res.status(201).json( { message: `Nueva venta registrada. ID autogenerado: ${id}` } )

@@ -1,4 +1,4 @@
-import { Product } from './classes/Product.js'
+import { Product } from '../classes/Product.js'
 
 document.addEventListener("DOMContentLoaded", async () => {
 

@@ -1,9 +1,30 @@
-// Aca se deberia recibir un objeto del front:
-// {
-//     "cliente": "Juan Pérez",
-//     "detalle": [
-//       { "id_producto": 1, "cantidad": 1 },
-//       { "id_producto": 2, "cantidad": 1 }
-//     ]
-//   }
-// Con ese objeto calcular el total y generar el objeto correspondiente para guardar en bbdd
+import { Productos } from "../models/index.js";
+
+export const generateSale = async (req, res, next) => {
+
+    const { detalle } = req.body
+
+    try {
+        
+        let total = 0;
+        await Promise.all(detalle.map(async element => {
+
+            const producto = await Productos.findOne({ where: { id: element.id_producto } });
+            if (!producto) throw new Error('Producto no encontrado');
+            element["precio"] = producto.precio
+            
+        }));
+        
+        detalle.forEach(e => {
+            total += (e.precio * e.cantidad);
+        });
+        
+        req.body.total = total;
+        req.body.detalle = detalle;
+
+        next();
+
+    } catch (error) {
+        res.status(500).json({ message: 'Error al generar la venta', error: error.message });
+    }
+}
