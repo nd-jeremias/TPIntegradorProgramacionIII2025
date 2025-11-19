@@ -39,7 +39,6 @@ export const getOneProduct = async (req, res) => {
                         as: 'categoria',
                         attributes: ['nombre']
                     },
-                    //{ model: Discos, required: false, as: 'info_disco', attributes: [ 'interprete', 'genero', 'año' ] }, 
                     {
                         model: Discos,
                         required: false,
