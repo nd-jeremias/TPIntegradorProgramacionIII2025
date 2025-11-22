@@ -1,44 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Odeon - Libros y Discos</title>
-    <!-- CSS Styles -->
-    <link rel="stylesheet" href="style.css"/>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Odeon - Libros y Discos</title>
+        <!-- CSS Styles -->
+        <link rel="stylesheet" href="style.css" />
 
+        <!-- Bootstrap Styles -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+            crossorigin="anonymous"
+        />
+    </head>
+    <body>
+        <header>
+            <a href="/index.html" class="logo-ancor">
+                <img src="./img/OdeonRecap.jpg" alt="logo" class="logo-img"/>
+            </a>
+            <nav class="">
+                <ul class="lista-sin-estilos">
+                    <li><a href="./index.html" class="nav-anchor">Bienvenida</a></li>
+                    <li><a href="./ingresar.html" class="nav-anchor">Ingreso Administrador</a></li>
+                    <li><a href="./carrito" class="nav-anchor">Carrito</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <!-- Bootstrap Styles -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">    
-</head>
-<body>
-    <header>
-        <a href="#" class="logo-ancor"><img src="./img/OdeonRecap.jpg" alt="logo" class="logo-img"></a>
-        <nav class="">
-            <ul class="lista-sin-estilos">
-                <li><a href="/" class="nav-anchor">Bienvenida</a></li>
-                <li><a href="/ingresar" class="nav-anchor">Ingreso Administrador</a></li>
-                <li><a href="/carrito" class="nav-anchor">Carrito</a></li>
-            </ul>
-        </nav>
-    </header>
+        <main>
+            <section id="container" class="productPage">
+                <!-- Aca cargar productos -->
+            </section>
 
-    <main>
+            <div id="navListContainer">
+                <!-- Aca cargan los botones de navegacion -->
+            </div>
+        </main>
 
-        <section id="container">
-            <!-- Aca cargar productos -->
-
-        </section>
-
-    </main>
-
-    <footer>
-        <h4>Nicolas Jeremias</h4>
-    </footer>
-    <script src="./script/productos.js" type="module"></script>
-    <!-- SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-</body>
+        <footer>
+            <h4>Nicolas Jeremias</h4>
+        </footer>
+        <script src="./script/productos.js" type="module"></script>
+        <!-- SweetAlert2 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!-- Bootstrap -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"
+        ></script>
+    </body>
 </html>

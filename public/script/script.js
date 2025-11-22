@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        localStorage.setItem('usuario', NOMBRE)
+
         location.href='./productos.html'
     })
     

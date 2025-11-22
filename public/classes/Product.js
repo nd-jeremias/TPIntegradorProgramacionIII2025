@@ -1,4 +1,6 @@
-export class Product{
+import { agregarAlCarrito } from "../script/modules/chart.js"
+
+export class Product {
 
     /**
      * @param {Number} id 
@@ -18,7 +20,7 @@ export class Product{
         this.status = status;
         this.category = category;
     }
-    
+
     getId() {
         return this.id
     }
@@ -27,11 +29,11 @@ export class Product{
         this.id = nuevoId;
     }
 
-    getPrice(){
+    getPrice() {
         return this.price;
     }
 
-    setPrice(newPrice){
+    setPrice(newPrice) {
         this.price = newPrice;
     }
 
@@ -42,7 +44,7 @@ export class Product{
     setCategory(newCategory) {
         this.category = newCategory;
     }
-    
+
     getStock() {
         return this.stock;
     }
@@ -50,7 +52,7 @@ export class Product{
     setStock(newStock) {
         this.stock = newStock;
     }
-    
+
     getImage() {
         return this.image;
     }
@@ -58,7 +60,7 @@ export class Product{
     setImage(newImage) {
         this.image = newImage;
     }
-    
+
     getStatus() {
         return this.status;
     }
@@ -69,13 +71,14 @@ export class Product{
 
     toHTML(page) {
         const card = document.createElement("div");
-        card.classList.add("card", "m-1");
+        card.classList.add("card", "m-3");
         card.style.width = "18rem";
+        card.id = "cardId"
 
         const img = document.createElement("img");
         img.src = this.image;
         img.alt = this.tittle;
-        img.classList.add("card-img-top");
+        img.classList.add("card-img-top", "m-1");
 
         const body = document.createElement("div");
         body.classList.add("card-body");
@@ -88,30 +91,38 @@ export class Product{
         price.classList.add("card-text");
         price.textContent = `$${this.price}`;
 
-        const btn = document.createElement("a");
-        const deleteBtn = document.createElement('a');
-
-        if( page == "admin" ){
+        const btn = document.createElement("button");
+        const deleteBtn = document.createElement('button');
+        
+        if (page == "admin") {
             btn.href = "#";
-            btn.classList.add("btn", "btn-secondary");
-            btn.textContent = "Modificar Producto";
-            btn.dataset.id = this.id; 
+            btn.classList.add("btn", "btn-secondary", "m-2");
+            btn.textContent = "Modificar";
+            btn.dataset.id = this.id;
             deleteBtn.href = "#"
             deleteBtn.classList.add("btn", "btn-danger");
-            deleteBtn.textContent = "Borrar Producto";
-            deleteBtn.dataset.id = this.id; 
+            deleteBtn.textContent = "Borrar";
+            deleteBtn.dataset.id = this.id;
         }
-        if( page == 'user') {
+        if (page == 'user') {
             btn.href = "#";
             btn.classList.add("btn", "btn-primary");
             btn.textContent = "Agregar al carrito";
-            btn.dataset.id = this.id; 
-        } 
+            btn.dataset.id = this.id;
+            // Listener para agregar al carrito
+            btn.addEventListener('click', (event) => {
+                event.preventDefault();
+                
+                // Llama a tu función externa que maneja la adición al carrito
+                // Pasándole la información necesaria del producto (this)
+                agregarAlCarrito(this.id, this.tittle, this.price);
+            });
+        }
         
         body.appendChild(title);
         body.appendChild(price);
         body.appendChild(btn);
-        body.appendChild(deleteBtn)
+        if(page == "admin") body.appendChild(deleteBtn)
         card.appendChild(img);
         card.appendChild(body);
 
