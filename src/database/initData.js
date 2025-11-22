@@ -12,61 +12,62 @@ export async function seedData() {
         await Categorias.bulkCreate([
             { nombre: 'Disco'},
             { nombre: 'Libro'}
-        ])
+        ]);
+        console.log('📊 Categorias creadas')
 
         // 2 Insertar productos
         const productos = await Productos.bulkCreate([
-        { titulo: 'Thriller', precio: 25.99, imagen: './src/data/img/Thriller', stock: 50, id_categoria: 1, estado: true },
-        { titulo: 'Back_in_Black', precio: 22.50, imagen: './src/data/img/Back_in_Black', stock: 40, id_categoria: 1, estado: true },
-        { titulo: 'The_Dark_Side_of_the_Moon', precio: 27.80, imagen: './src/data/img/The_Dark_Side_of_the_Moon', stock: 30, id_categoria: 1, estado: true },
-        { titulo: 'The_Bodyguard', precio: 18.90, imagen: './src/data/img/The_Bodyguard', stock: 20, id_categoria: 1, estado: true },
-        { titulo: 'Rumours', precio: 21.40, imagen: './src/data/img/Rumours', stock: 35, id_categoria: 1, estado: true },
-        { titulo: 'Saturday_Night_Fever', precio: 19.99, imagen: './src/data/img/Saturday_Night_Fever', stock: 25, id_categoria: 1, estado: true },
-        { titulo: 'Hotel_California', precio: 23.70, imagen: './src/data/img/Hotel_California', stock: 32, id_categoria: 1, estado: true },
-        { titulo: 'Their_Greatest_Hits', precio: 24.60, imagen: './src/data/img/Their_Greatest_Hits', stock: 40, id_categoria: 1, estado: true },
-        { titulo: 'Come_On_Over', precio: 17.90, imagen: './src/data/img/Come_On_Over', stock: 20, id_categoria: 1, estado: true },
-        { titulo: '21', precio: 20.50, imagen: './src/data/img/21', stock: 50, id_categoria: 1, estado: true },
-        { titulo: 'Bad', precio: 25.00, imagen: './src/data/img/Bad', stock: 45, id_categoria: 1, estado: true },
-        { titulo: 'Led_Zeppelin_IV', precio: 26.30, imagen: './src/data/img/Led_Zeppelin_IV', stock: 30, id_categoria: 1, estado: true },
-        { titulo: 'Jagged_Little_Pill', precio: 19.40, imagen: './src/data/img/Jagged_Little_Pill', stock: 28, id_categoria: 1, estado: true },
-        { titulo: 'Abbey_Road', precio: 28.90, imagen: './src/data/img/Abbey_Road', stock: 25, id_categoria: 1, estado: true },
-        { titulo: 'Born_in_the_USA', precio: 20.10, imagen: './src/data/img/Born_in_the_USA', stock: 35, id_categoria: 1, estado: true },
-        { titulo: 'Nevermind', precio: 24.20, imagen: './src/data/img/Nevermind', stock: 25, id_categoria: 1, estado: true },
-        { titulo: 'Appetite_for_Destruction', precio: 22.00, imagen: './src/data/img/Appetite_for_Destruction', stock: 30, id_categoria: 1, estado: true },
-        { titulo: '1_(One)', precio: 26.00, imagen: './src/data/img/1_(One)', stock: 20, id_categoria: 1, estado: true },
-        { titulo: 'Supernatural', precio: 23.30, imagen: './src/data/img/Supernatural', stock: 30, id_categoria: 1, estado: true },
-        { titulo: 'The_Eminem_Show', precio: 21.80, imagen: './src/data/img/The_Eminem_Show', stock: 35, id_categoria: 1, estado: true },
-        { titulo: 'Hybrid_Theory', precio: 20.70, imagen: './src/data/img/Hybrid_Theory', stock: 40, id_categoria: 1, estado: true },
-        { titulo: 'Oops!..._I_Did_It_Again', precio: 18.50, imagen: './src/data/img /Oops!..._Did_It_Again', stock: 30, id_categoria: 1, estado: true },
-        { titulo: 'Come_Away_with_Me', precio: 17.80, imagen: './src/data/img/Come_Away_with_Me', stock: 25, id_categoria: 1, estado: true },
-        { titulo: 'Falling_into_You', precio: 19.60, imagen: './src/data/img/Falling_into_You', stock: 28, id_categoria: 1, estado: true },
-        { titulo: 'Back_to_Black', precio: 22.20, imagen: './src/data/img/Back_to_Black', stock: 20, id_categoria: 1, estado: true },
-        { titulo: '1984', precio: 8900.00, imagen: './src/data/img/1984.jpg', stock: 25, id_categoria: 2, estado: true },
-        { titulo: 'Cien_años_de_soledad', precio: 9200.00, imagen: './src/data/img/Cien_años_de_soledad.jpg', stock: 20, id_categoria: 2, estado: true },
-        { titulo: 'Don_Quijote_de_la_Mancha', precio: 8700.00, imagen: './src/data/img/Don_Quijote_de_la_Mancha.jpg', stock: 15, id_categoria: 2, estado: true },
-        { titulo: 'El_principito', precio: 7600.00, imagen: './src/data/img/El_principito.jpg', stock: 40, id_categoria: 2, estado: true },
-        { titulo: 'Crimen_y_castigo', precio: 8800.00, imagen: './src/data/img/Crimen_y_castigo.jpg', stock: 20, id_categoria: 2, estado: true },
-        { titulo: 'Orgullo_y_prejuicio', precio: 8500.00, imagen: './src/data/img/Orgullo_y_prejuicio.jpg', stock: 18, id_categoria: 2, estado: true },
-        { titulo: 'En_busca_del_tiempo_perdido', precio: 9900.00, imagen: './src/data/img/En_busca_del_tiempo_perdido.jpg', stock: 12, id_categoria: 2, estado: true },
-        { titulo: 'Ulises', precio: 9700.00, imagen: './src/data/img/Ulises.jpg', stock: 10, id_categoria: 2, estado: true },
-        { titulo: 'Fahrenheit_451', precio: 8000.00, imagen: './src/data/img/Fahrenheit_451.jpg', stock: 22, id_categoria: 2, estado: true },
-        { titulo: 'Matar_a_un_ruiseñor', precio: 8800.00, imagen: './src/data/img/Matar_a_un_ruiseñor.jpg', stock: 25, id_categoria: 2, estado: true },
-        { titulo: 'El_gran_Gatsby', precio: 8300.00, imagen: './src/data/img/El_gran_Gatsby.jpg', stock: 30, id_categoria: 2, estado: true },
-        { titulo: 'Los_miserables', precio: 9400.00, imagen: './src/data/img/Los_miserables.jpg', stock: 15, id_categoria: 2, estado: true },
-        { titulo: 'La_odisea', precio: 9100.00, imagen: './src/data/img/La_odisea.jpg', stock: 10, id_categoria: 2, estado: true },
-        { titulo: 'La_Iliada', precio: 9000.00, imagen: './src/data/img/La_Iliada.jpg', stock: 10, id_categoria: 2, estado: true },
-        { titulo: 'El_viejo_y_el_mar', precio: 7800.00, imagen: './src/data/img/El_viejo_y_el_mar.jpg', stock: 25, id_categoria: 2, estado: true },
-        { titulo: 'El_retrato_de_Dorian_Gray', precio: 8500.00, imagen: './src/data/img/El_retrato_de_Dorian_Gray.jpg', stock: 18, id_categoria: 2, estado: true },
-        { titulo: 'Rayuela', precio: 8700.00, imagen: './src/data/img/Rayuela.jpg', stock: 22, id_categoria: 2, estado: true },
-        { titulo: 'La_metamorfosis', precio: 8100.00, imagen: './src/data/img/La_metamorfosis.jpg', stock: 35, id_categoria: 2, estado: true },
-        { titulo: 'Moby_Dick', precio: 9300.00, imagen: './src/data/img/Moby_Dick.jpg', stock: 10, id_categoria: 2, estado: true },
-        { titulo: 'El_nombre_de_la_rosa', precio: 8900.00, imagen: './src/data/img/El_nombre_de_la_rosa.jpg', stock: 20, id_categoria: 2, estado: true },
-        { titulo: 'La_sombra_del_viento', precio: 8600.00, imagen: './src/data/img/La_sombra_del_viento.jpg', stock: 30, id_categoria: 2, estado: true },
-        { titulo: 'El_alquimista', precio: 8200.00, imagen: './src/data/img/El_alquimista.jpg', stock: 45, id_categoria: 2, estado: true },
-        { titulo: 'Dracula', precio: 8400.00, imagen: './src/data/img/Dracula.jpg', stock: 25, id_categoria: 2, estado: true },
-        { titulo: 'Frankenstein', precio: 8500.00, imagen: './src/data/img/Frankenstein.jpg', stock: 20, id_categoria: 2, estado: true },
-        { titulo: 'Los_pilares_de_la_Tierra', precio: 9600.00, imagen: './src/data/img/Los_pilares_de_la_Tierra.jpg', stock: 12, id_categoria: 2, estado: true },
-        { titulo: 'It', precio: 9800.00, imagen: './src/data/img/It.jpg', stock: 10, id_categoria: 2, estado: true }
+        { titulo: 'Thriller', precio: 25.99, imagen: '/img/CIL001.jpg', stock: 50, id_categoria: 1, estado: true },
+        { titulo: 'Back in Black', precio: 22.50, imagen: '/img/CIL002.jpg', stock: 40, id_categoria: 1, estado: true },
+        { titulo: 'The Dark Side of the Moon', precio: 27.80, imagen: '/img/CIL003.jpg', stock: 30, id_categoria: 1, estado: true },
+        { titulo: 'The Bodyguard', precio: 18.90, imagen: '/img/CIL004.jpg', stock: 20, id_categoria: 1, estado: true },
+        { titulo: 'Rumours', precio: 21.40, imagen: '/img/CIL005.jpg', stock: 35, id_categoria: 1, estado: true },
+        { titulo: 'Saturday Night Fever', precio: 19.99, imagen: '/img/CIL006.jpg', stock: 25, id_categoria: 1, estado: true },
+        { titulo: 'Hotel California', precio: 23.70, imagen: '/img/CIL007.jpg', stock: 32, id_categoria: 1, estado: true },
+        { titulo: 'Their Greatest Hits', precio: 24.60, imagen: '/img/CIL008.jpg', stock: 40, id_categoria: 1, estado: true },
+        { titulo: 'Come On Over', precio: 17.90, imagen: '/img/CIL009.jpg', stock: 20, id_categoria: 1, estado: true },
+        { titulo: '21', precio: 20.50, imagen: '/img/CIL010.jpg', stock: 50, id_categoria: 1, estado: true },
+        { titulo: 'Bad', precio: 25.00, imagen: '/img/CIL011.jpg', stock: 45, id_categoria: 1, estado: true },
+        { titulo: 'Led Zeppelin IV', precio: 26.30, imagen: '/img/CIL012.jpg', stock: 30, id_categoria: 1, estado: true },
+        { titulo: 'Jagged Little Pill', precio: 19.40, imagen: '/img/CIL013.jpg', stock: 28, id_categoria: 1, estado: true },
+        { titulo: 'Abbey Road', precio: 28.90, imagen: '/img/CIL014.jpg', stock: 25, id_categoria: 1, estado: true },
+        { titulo: 'Born in the USA', precio: 20.10, imagen: '/img/CIL015.jpg', stock: 35, id_categoria: 1, estado: true },
+        { titulo: 'Nevermind', precio: 24.20, imagen: '/img/CIL016.jpg', stock: 25, id_categoria: 1, estado: true },
+        { titulo: 'Appetite for Destruction', precio: 22.00, imagen: '/img/CIL017.jpg', stock: 30, id_categoria: 1, estado: true },
+        { titulo: '1 (One)', precio: 26.00, imagen: '/img/CIL018.jpg', stock: 20, id_categoria: 1, estado: true },
+        { titulo: 'Supernatural', precio: 23.30, imagen: '/img/CIL019.jpg', stock: 30, id_categoria: 1, estado: true },
+        { titulo: 'The Eminem Show', precio: 21.80, imagen: '/img/CIL020.jpg', stock: 35, id_categoria: 1, estado: true },
+        { titulo: 'Hybrid Theory', precio: 20.70, imagen: '/img/CIL021.jpg', stock: 40, id_categoria: 1, estado: true },
+        { titulo: 'Oops!..._I_Did It Again', precio: 18.50, imagen: '/img/CIL022.jpg', stock: 30, id_categoria: 1, estado: true },
+        { titulo: 'Come Away with Me', precio: 17.80, imagen: '/img/CIL023.jpg', stock: 25, id_categoria: 1, estado: true },
+        { titulo: 'Falling into You', precio: 19.60, imagen: '/img/CIL024.jpg', stock: 28, id_categoria: 1, estado: true },
+        { titulo: 'Back to Black', precio: 22.20, imagen: '/img/CIL025.jpg', stock: 20, id_categoria: 1, estado: true },
+        { titulo: '1984', precio: 8900.00, imagen: '/img/CIL026.jpg', stock: 25, id_categoria: 2, estado: true },
+        { titulo: 'Cien años de soledad', precio: 9200.00, imagen: '/img/CIL027.jpg', stock: 20, id_categoria: 2, estado: true },
+        { titulo: 'Don Quijote de la Mancha', precio: 8700.00, imagen: '/img/CIL028.jpg', stock: 15, id_categoria: 2, estado: true },
+        { titulo: 'El principito', precio: 7600.00, imagen: '/img/CIL029.jpg', stock: 40, id_categoria: 2, estado: true },
+        { titulo: 'Crimen y castigo', precio: 8800.00, imagen: '/img/CIL030.jpg', stock: 20, id_categoria: 2, estado: true },
+        { titulo: 'Orgullo y prejuicio', precio: 8500.00, imagen: '/img/CIL031.jpg', stock: 18, id_categoria: 2, estado: true },
+        { titulo: 'En busca del tiempo perdido', precio: 9900.00, imagen: '/img/CIL032.jpg', stock: 12, id_categoria: 2, estado: true },
+        { titulo: 'Ulises', precio: 9700.00, imagen: '/img/CIL033.jpg', stock: 10, id_categoria: 2, estado: true },
+        { titulo: 'Fahrenheit 451', precio: 8000.00, imagen: '/img/CIL034.jpg', stock: 22, id_categoria: 2, estado: true },
+        { titulo: 'Matar a un ruiseñor', precio: 8800.00, imagen: '/img/CIL035.jpg', stock: 25, id_categoria: 2, estado: true },
+        { titulo: 'El gran Gatsby', precio: 8300.00, imagen: '/img/CIL036.jpg', stock: 30, id_categoria: 2, estado: true },
+        { titulo: 'Los miserables', precio: 9400.00, imagen: '/img/CIL037.jpg', stock: 15, id_categoria: 2, estado: true },
+        { titulo: 'La odisea', precio: 9100.00, imagen: '/img/CIL038.jpg', stock: 10, id_categoria: 2, estado: true },
+        { titulo: 'La Iliada', precio: 9000.00, imagen: '/img/CIL039.jpg', stock: 10, id_categoria: 2, estado: true },
+        { titulo: 'El viejo y el mar', precio: 7800.00, imagen: '/img/CIL040.jpg', stock: 25, id_categoria: 2, estado: true },
+        { titulo: 'El retrato de Dorian Gray', precio: 8500.00, imagen: '/img/CIL041.jpg', stock: 18, id_categoria: 2, estado: true },
+        { titulo: 'Rayuela', precio: 8700.00, imagen: '/img/CIL042.jpg', stock: 22, id_categoria: 2, estado: true },
+        { titulo: 'La metamorfosis', precio: 8100.00, imagen: '/img/CIL043.jpg', stock: 35, id_categoria: 2, estado: true },
+        { titulo: 'Moby Dick', precio: 9300.00, imagen: '/img/CIL044.jpg', stock: 10, id_categoria: 2, estado: true },
+        { titulo: 'El nombre de la rosa', precio: 8900.00, imagen: '/img/CIL045.jpg', stock: 20, id_categoria: 2, estado: true },
+        { titulo: 'La sombra del viento', precio: 8600.00, imagen: '/img/CIL046.jpg', stock: 30, id_categoria: 2, estado: true },
+        { titulo: 'El alquimista', precio: 8200.00, imagen: '/img/CIL047.jpg', stock: 45, id_categoria: 2, estado: true },
+        { titulo: 'Dracula', precio: 8400.00, imagen: '/img/CIL048.jpg', stock: 25, id_categoria: 2, estado: true },
+        { titulo: 'Frankenstein', precio: 8500.00, imagen: '/img/CIL049.jpg', stock: 20, id_categoria: 2, estado: true },
+        { titulo: 'Los pilares de la Tierra', precio: 9600.00, imagen: '/img/CIL050.jpg', stock: 12, id_categoria: 2, estado: true },
+        { titulo: 'It', precio: 9800.00, imagen: '/img/CIL051.jpg', stock: 10, id_categoria: 2, estado: true }
         ]);
         console.log('📦 Productos cargados correctamente.');
         
@@ -105,6 +106,7 @@ export async function seedData() {
             { genero: 'Histórico'},
             { genero: 'Terror'},
         ])
+        console.log("☢️ Generos cargados correctamente!")
         
         // 4 Insertar Discos
         const discos = await Discos.bulkCreate([
@@ -134,36 +136,38 @@ export async function seedData() {
             { id_producto: 24, interprete: 'Celine Dion', id_genero: 1, año: 1996 },
             { id_producto: 25, interprete: 'Amy Winehouse', id_genero: 7, año: 2000 }
         ]);
+        console.log("💿 Discos cargados correctamente!")
         
         // 5 Insertar Libros
         const libros = await Libros.bulkCreate([
-            { id_producto: 26, autor: 'George Orwell', editorial: 'Secker&Warburg', id_genero: 15 },
-            { id_producto: 27, autor: 'Gabriel García Márquez', editorial: 'Sudamericana', id_genero: 16 },
-            { id_producto: 28, autor: 'Miguel de Cervantes', editorial: 'Francisco de Robles', id_genero: 17 },
-            { id_producto: 29, autor: 'Antoine de Saint-Exupéry', editorial: 'Reynal & Hitchcock', id_genero: 18 },
-            { id_producto: 30, autor: 'Fiódor Dostoyevski', editorial: 'The Russian Messenger', id_genero: 23 },
-            { id_producto: 31, autor: 'Jane Austen', editorial: 'T. Egerton', id_genero: 19 },
-            { id_producto: 32, autor: 'Marcel Proust', editorial: 'Grasset', id_genero: 20 },
-            { id_producto: 33, autor: 'James Joyce', editorial: 'Sylvia Beach', id_genero: 21 },
-            { id_producto: 34, autor: 'Ray Bradbury', editorial: 'Ballantine Books', id_genero: 22 },
-            { id_producto: 35, autor: 'Harper Lee', editorial: 'J. B. Lippincott & Co.', id_genero: 23 },
-            { id_producto: 36, autor: 'F. Scott Fitzgerald', editorial: "Charles Scribner's Sons", id_genero: 24 },
-            { id_producto: 37, autor: 'Victor Hugo', editorial: 'A. Lacroix', id_genero: 31 },
-            { id_producto: 38, autor: 'Homero', editorial: 'Antigua Grecia', id_genero: 25 },
-            { id_producto: 39, autor: 'Homero', editorial: 'Antigua Grecia', id_genero: 25 },
-            { id_producto: 40, autor: 'Ernest Hemingway', editorial: "Charles Scribner's Sons", id_genero: 17 },
-            { id_producto: 41, autor: 'Oscar Wilde', editorial: 'Ward, Lock & Co.', id_genero: 26 },
+            { id_producto: 26, autor: 'George Orwell', editorial: 'Minotauro', id_genero: 15 },
+            { id_producto: 27, autor: 'Gabriel García Márquez', editorial: 'Debolsillo', id_genero: 16 },
+            { id_producto: 28, autor: 'Miguel de Cervantes', editorial: 'Biblioteca Teide', id_genero: 17 },
+            { id_producto: 29, autor: 'Antoine de Saint-Exupéry', editorial: 'Sudamericana', id_genero: 18 },
+            { id_producto: 30, autor: 'Fiódor Dostoyevski', editorial: 'Debolsillo', id_genero: 23 },
+            { id_producto: 31, autor: 'Jane Austen', editorial: 'Elejandria', id_genero: 19 },
+            { id_producto: 32, autor: 'Marcel Proust', editorial: 'Edesa', id_genero: 20 },
+            { id_producto: 33, autor: 'James Joyce', editorial: 'Pluton', id_genero: 21 },
+            { id_producto: 34, autor: 'Ray Bradbury', editorial: 'Ballantine_Books', id_genero: 22 },
+            { id_producto: 35, autor: 'Harper Lee', editorial: 'Haper Collins', id_genero: 23 },
+            { id_producto: 36, autor: 'F. Scott Fitzgerald', editorial: "Losada", id_genero: 24 },
+            { id_producto: 37, autor: 'Victor Hugo', editorial: 'Losada', id_genero: 31 },
+            { id_producto: 38, autor: 'Homero', editorial: 'Salim', id_genero: 25 },
+            { id_producto: 39, autor: 'Homero', editorial: 'Alma', id_genero: 25 },
+            { id_producto: 40, autor: 'Ernest Hemingway', editorial: "Debolsillo", id_genero: 17 },
+            { id_producto: 41, autor: 'Oscar Wilde', editorial: 'Alma', id_genero: 26 },
             { id_producto: 42, autor: 'Julio Cortázar', editorial: 'Sudamericana', id_genero: 27 },
-            { id_producto: 43, autor: 'Franz Kafka', editorial: 'Kurt Wolff', id_genero: 28 },
-            { id_producto: 44, autor: 'Herman Melville', editorial: 'Harper & Brothers', id_genero: 17 },
-            { id_producto: 45, autor: 'Umberto Eco', editorial: 'Bompiani', id_genero: 29 },
+            { id_producto: 43, autor: 'Franz Kafka', editorial: 'Alianza', id_genero: 28 },
+            { id_producto: 44, autor: 'Herman Melville', editorial: 'Susaeta', id_genero: 17 },
+            { id_producto: 45, autor: 'Umberto Eco', editorial: 'Lumen', id_genero: 29 },
             { id_producto: 46, autor: 'Carlos Ruiz Zafón', editorial: 'Planeta', id_genero: 29 },
-            { id_producto: 47, autor: 'Paulo Coelho', editorial: 'HarperTorch', id_genero: 30 },
-            { id_producto: 48, autor: 'Bram Stoker', editorial: 'Archibald Constable', id_genero: 32 },
-            { id_producto: 49, autor: 'Mary Shelley', editorial: 'Lackington, Hughes, Harding, Mavor & Jones', id_genero: 32 },
-            { id_producto: 50, autor: 'Ken Follett', editorial: 'Macmillan', id_genero: 31 },
+            { id_producto: 47, autor: 'Paulo Coelho', editorial: 'Planeta', id_genero: 30 },
+            { id_producto: 48, autor: 'Bram Stoker', editorial: 'Fontana', id_genero: 32 },
+            { id_producto: 49, autor: 'Mary Shelley', editorial: 'Fontana', id_genero: 32 },
+            { id_producto: 50, autor: 'Ken Follett', editorial: 'Plaza Janes', id_genero: 31 },
             { id_producto: 51, autor: 'Stephen King', editorial: 'Viking Press', id_genero: 32 }
-        ])
+        ]);
+        console.log("📖 Libros cargados correctamente!")
 
         // 6 Insertar ventas
         const ventas = await Ventas.bulkCreate([
@@ -203,7 +207,9 @@ export async function seedData() {
         // 8 Insertar Usuarios(admin)
         await Usuarios.bulkCreate([
             { email: 'nicolas@email.com', nombre: 'Nicolas', apellido: 'Jeremias', contraseña: '$2b$10$X8IKXGfCWhiQoe34FqLf6eSIYfbRnLsCOHkVphwqpyKm9rRY1.sLO' },// password = '$2b$10$X8IKXGfCWhiQoe34FqLf6eSIYfbRnLsCOHkVphwqpyKm9rRY1.sLO' - salt = 10
-        ])
+            { email: 'admin@root.com', nombre: 'admin', apellido: 'root', contraseña: '$2b$10$n/SBDbMKtdHU7ijHXfit7.ySfb6Bqtv6v3M5MVzbCKCoLoKg3zGuu'}
+        ]);
+        console.log('✍🏻 Usuarios registrados.');
 
         console.log('✅ Base de datos inicializada con éxito.');
     } catch (error) {
