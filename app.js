@@ -36,7 +36,7 @@ import cookieParser from 'cookie-parser';
 app.use(cookieParser());
 
 /* Rutas de cliente */
-//app.use('/', userRoutes);
+app.use('/', userRoutes);
 
 /*  API Routes */
 app.use('/api/productos', productRoutes);

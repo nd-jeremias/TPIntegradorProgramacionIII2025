@@ -8,14 +8,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const NOMBRE = document.getElementById('nombre').value.trim();
 
-        if(!NOMBRE) {
+        if (!NOMBRE) {
             Swal.fire("Campo vacío", "Completá con tu nombre", "warning");
             return;
         }
 
         localStorage.setItem('usuario', NOMBRE)
 
-        location.href='./productos.html'
+        location.href = './productos.html'
     })
-    
+
 });

@@ -45,7 +45,7 @@ const storage = multer.diskStorage({
 
         // 5. Elimina guiones bajos al inicio o al final
         cleanName = cleanName.replace(/^_+|_+$/g, "");
-        console.log(cleanName)
+        
         // Si cleanName es un string vacio, crea un nombre generico
         if (cleanName == "generic") {
 

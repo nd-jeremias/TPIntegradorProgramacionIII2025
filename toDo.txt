@@ -1,0 +1,6 @@
+PUBLIC -- Colocar boton siguiente(compra) para pasar al carrito y finalizar
+
+EJS -- agregar listeners botones modificar y borrar
+EJS -- Agregar boton para crear nuevo objeto
+
+abmForm.js -- Revisar la estructura para enviar el objeto al put

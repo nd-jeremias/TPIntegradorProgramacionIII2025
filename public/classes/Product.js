@@ -69,6 +69,11 @@ export class Product {
         this.status = !this.status;
     }
 
+    /**
+     * Crea los elementos HTML necesarios para cada caso
+     * @param {String} page "admin" || "user"
+     * @returns 
+     */
     toHTML(page) {
         const card = document.createElement("div");
         card.classList.add("card", "m-3");
@@ -99,6 +104,10 @@ export class Product {
             btn.classList.add("btn", "btn-secondary", "m-2");
             btn.textContent = "Modificar";
             btn.dataset.id = this.id;
+            btn.addEventListener("click", (event => {
+                window.location.href = `./editar/${this.id}`;
+            }))
+
             deleteBtn.href = "#"
             deleteBtn.classList.add("btn", "btn-danger");
             deleteBtn.textContent = "Borrar";
