@@ -5,8 +5,9 @@ const ITEMS_PER_PAGE = 12;
 /**
  * Crea productos en el contenedor
  * @param {Number} page : pagina actual. Default: 1
+ * @param {String} context : contexto de renderizado( "admin" || "user")
  */
-export async function cargarProductos(data, page = 1) {
+export async function cargarProductos(data, context, page = 1) {
 
     const container = document.getElementById("container");
     container.innerHTML = "";
@@ -18,9 +19,9 @@ export async function cargarProductos(data, page = 1) {
         let productos = data.slice(start, finish);
         
         productos.forEach(p => {
-            p.imagen = `/public${p.imagen}` // Esto es para el forntend
-            const producto = new Product(p.id, p.titulo, p.precio, p.imagen, p.stock, p.estado, p.categoria.nombre)
-            container.appendChild(producto.toHTML("user"));
+            const imagen = (context == "admin") ? p.imagen : p.imagen = `/public${p.imagen}` // Esto es si lo cargamos desde LiveServer
+            const producto = new Product(p.id, p.titulo, p.precio, imagen, p.stock, p.estado, p.categoria.nombre)
+            container.appendChild(producto.toHTML(context));
         });
 
     } catch (error) {
