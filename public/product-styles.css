@@ -1,0 +1,35 @@
+.card-img-top {
+    height: 200px;
+    object-fit: contain;
+}
+
+.cards-container {
+    display: grid;
+    gap: 1.5rem;
+    padding: 1rem;
+    width: 100%;
+
+    /* Máximo 3 columnas */
+    grid-template-columns: repeat(3, 1fr);
+
+    /* Alineación estética */
+    justify-items: center;
+}
+
+#navList-Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+}

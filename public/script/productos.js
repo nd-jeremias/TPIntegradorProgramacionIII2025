@@ -6,7 +6,7 @@ let data = null;
 
 let actualPage = 1;  // empieza en 0;
 let totalPages = 0;
-const ITEMS_PER_PAGE = 12; // Hacer coincidir en renderElements
+const ITEMS_PER_PAGE = 9; // Hacer coincidir en renderElements
 
 // Detecta automáticamente si la vista es admin o frontend
 const PAGE = window.location.pathname.startsWith("/admin")

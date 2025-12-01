@@ -1,6 +1,6 @@
 import { Product } from '../../classes/Product.js'
 
-const ITEMS_PER_PAGE = 12;
+const ITEMS_PER_PAGE = 9;
 
 /**
  * Crea productos en el contenedor
@@ -9,7 +9,7 @@ const ITEMS_PER_PAGE = 12;
  */
 export async function cargarProductos(data, context, page = 1) {
 
-    const container = document.getElementById("container");
+    const container = document.getElementById("cards-container");
     container.innerHTML = "";
     
     try {
@@ -38,7 +38,7 @@ export async function cargarProductos(data, context, page = 1) {
  */
 export function loadBtns(actualPage, totalPages, pageChange) {
 
-    const container = document.getElementById('navListContainer');
+    const container = document.getElementById('navList-Container');
     container.innerHTML = '';
 
     // Crear un fragmento para inserción eficiente
