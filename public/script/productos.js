@@ -1,5 +1,5 @@
 import { getProducts } from './modules/getProducts.js'
-import { loadBtns, cargarProductos } from './modules/renderElements.js'
+import { loadBtns, cargarProductos } from './UI/renderElements.js'
 
 let carrito = null;
 let data = null;

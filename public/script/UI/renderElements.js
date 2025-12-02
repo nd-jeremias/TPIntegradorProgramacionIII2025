@@ -1,5 +1,6 @@
 import { Product } from '../../classes/Product.js'
-
+import { renderCard } from './renderProducts.js';
+import { attachProductEvents } from './productEvents.js'
 const ITEMS_PER_PAGE = 9;
 
 /**
@@ -21,7 +22,12 @@ export async function cargarProductos(data, context, page = 1) {
         productos.forEach(p => {
             const imagen = (context == "admin") ? p.imagen : p.imagen = `/public${p.imagen}` // Esto es si lo cargamos desde LiveServer
             const producto = new Product(p.id, p.titulo, p.precio, imagen, p.stock, p.estado, p.categoria.nombre)
-            container.appendChild(producto.toHTML(context));
+            container.appendChild(renderCard(producto));
+            const buttons = container.querySelectorAll("button");
+            buttons.forEach(b => {
+
+                attachProductEvents(b, producto) // Esto define cada evento en cada boton. ok
+            })
         });
 
     } catch (error) {

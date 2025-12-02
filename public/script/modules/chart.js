@@ -9,6 +9,8 @@ function guardarCarrito(carrito) {
 
 }
 
+let carrito = []
+
 /**
  * Añade un producto al carrito de compras.
  * @param {number} id - El ID único del producto.
