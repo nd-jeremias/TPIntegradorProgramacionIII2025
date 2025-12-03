@@ -1,5 +1,3 @@
-import { agregarAlCarrito } from "../script/modules/chart.js"
-
 export class Product {
 
     /**

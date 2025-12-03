@@ -1,10 +1,9 @@
 import { getProducts } from './modules/getProducts.js'
 import { loadBtns, cargarProductos } from './UI/renderElements.js'
 
-let carrito = null;
 let data = null;
 
-let actualPage = 1;  // empieza en 0;
+let actualPage = 1;  // empieza en 1;
 let totalPages = 0;
 const ITEMS_PER_PAGE = 9; // Hacer coincidir en renderElements
 
@@ -24,8 +23,8 @@ function cambiarPagina(nuevaPagina) {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    // Cargamos el carrito si existe en localStorage o creamos uno vacio
-    carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
+    // Cargamos el carrito si existe en localStorage o creamos uno vacio -- Edit: no es necesario(esta en LocalStorage)
+    // let carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
 
     if (!data) {
         data = await getProducts()
