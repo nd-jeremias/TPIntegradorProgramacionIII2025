@@ -1,3 +1,4 @@
+import { updateCartBadge } from '../UI/cartUI.js'
 /**
  * Guarda el array en LocalStorage
  * @param {Array} carrito Lista de productos cargados hasta el momento
@@ -38,8 +39,8 @@ export function agregarAlCarrito(id, titulo, precio) {
     // 2. Guardar el estado actual del carrito en localStorage
     guardarCarrito(carrito);
 
-    // Opcional: Actualizar la interfaz de usuario (UI), por ejemplo, un contador del carrito
-    // actualizarContadorCarrito();
+    // Actualizar contador del carrito
+    updateCartBadge();
 }
 
 export function eliminarDelCarrito(id) {
@@ -57,4 +58,6 @@ export function eliminarDelCarrito(id) {
         console.log(`Se quito un item id ${id}`);
     }
     guardarCarrito(carrito);
+    // Actualizar contador del carrito
+    updateCartBadge();
 }

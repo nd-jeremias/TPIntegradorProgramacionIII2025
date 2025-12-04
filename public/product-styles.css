@@ -22,6 +22,15 @@
     align-items: center;
 }
 
+#cart-badge {
+    background: rgb(230, 12, 12);
+    color: white;
+    border-radius: 50%;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    margin-left: 0.3rem;
+}
+
 @media (max-width: 900px) {
     .cards-container {
         grid-template-columns: repeat(2, 1fr);

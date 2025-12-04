@@ -1,7 +1,8 @@
 import express from 'express';
-import { getOneProduct, disableProduct, updateProduct, createProduct } from '../controllers/productController.js';
+import { disableProduct, updateProduct, createProduct } from '../controllers/productController.js';
 import { upload } from '../middleware/uploadImages.js';
 import { saveImg, saveMultiImg } from '../controllers/imgController.js';
+import { ValidationRules } from '../middleware/checkData.js';
 
 const router = express.Router();
 
@@ -20,14 +21,23 @@ router.get('/editar/:id', (req, res) => {
 
 });
 
+// Admin Create (EJS)
+router.get('/crear', (req, res) => {
+
+    res.render('pages/product', {
+        modo: 'crear',
+        id: null
+    });
+});
+
 // Deshabilitar producto por id
 router.put('/:id', disableProduct);
 
 // Modificar producto
-router.put('/update/:id', updateProduct);
+router.put('/update/:id', upload.single("imagen"), ValidationRules, updateProduct)
 
 // Crear producto
-router.post('/create', createProduct);
+router.post('/create', upload.single("imagen"), ValidationRules, createProduct);
 
 // Cargar imagenes
 router.post("/upload/:nombre", upload.single("archivo"), saveImg);

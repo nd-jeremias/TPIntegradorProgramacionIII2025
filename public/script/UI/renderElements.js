@@ -74,6 +74,10 @@ export function createCard(product) {
     price.classList.add("card-text");
     price.textContent = `$${product.price}`;
 
+    const stock = document.createElement("p");
+    stock.classList.add("card-text", "stock");
+    stock.textContent = `Stock: ${product.stock}`;
+
     const btn = document.createElement("button");
     btn.href = "#";
     btn.classList.add("btn", "add", "btn-success", "m-2");
@@ -88,6 +92,7 @@ export function createCard(product) {
 
     body.appendChild(title);
     body.appendChild(price);
+    body.appendChild(stock);
     body.appendChild(btn);
     body.appendChild(deleteBtn);
     card.appendChild(img);
@@ -139,4 +144,19 @@ export async function cargarProductos(data, context, page = 1) {
         console.error("Error creando productos en container:", error);
         container.textContent = "Error al crear productos";
     }
+}
+
+/**
+ * Modifica el stock en el producto y en el html
+ * @param {HTMLElement} element <p></p> donde esta anotado el stock
+ */
+export function modStock(element, producto, add = true){
+
+    if(add) {
+        producto.stock--;
+    } else {
+        producto.stock++;
+    }
+    element.innerHTML = `Stock: ${producto.stock}`;
+
 }

@@ -1,7 +1,6 @@
 import { getProducts } from './modules/getProducts.js'
 import { loadBtns, cargarProductos } from './UI/renderElements.js'
-
-let data = null;
+import { updateCartBadge } from './UI/cartUI.js'
 
 let actualPage = 1;  // empieza en 1;
 let totalPages = 0;
@@ -25,14 +24,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Cargamos el carrito si existe en localStorage o creamos uno vacio -- Edit: no es necesario(esta en LocalStorage)
     // let carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
+    
+    localStorage.setItem("carrito", '[]'); // Inicializamos un carrito vacio siempre que cargue la pagina
 
-    if (!data) {
-        data = await getProducts()
-    }
-
+    const data = await getProducts()
+    
     cargarProductos(data, PAGE)
-
+    
     totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
     loadBtns(actualPage, totalPages, cambiarPagina);
-
+    
+    updateCartBadge()
 });
