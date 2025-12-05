@@ -81,13 +81,13 @@ export function createCard(product) {
     const btn = document.createElement("button");
     btn.href = "#";
     btn.classList.add("btn", "add", "btn-success", "m-2");
-    btn.textContent = "Agregar al carrito";
+    btn.textContent = "Agregar";
     btn.dataset.id = product.id;
 
     const deleteBtn = document.createElement("button");
     deleteBtn.href = "#";
     deleteBtn.classList.add("btn", "remove", "btn-danger", "m-2", "d-none");
-    deleteBtn.textContent = "Eliminar del carrito";
+    deleteBtn.textContent = "Eliminar";
     deleteBtn.dataset.id = product.id;
 
     body.appendChild(title);
@@ -121,6 +121,14 @@ export async function cargarProductos(data, context, page = 1) {
         let productos = data.slice(start, finish);
 
         productos.forEach((p) => {
+            if(p.info_disco){
+                // Crear Disco
+                
+            }
+            if(p.info_libro){
+                
+                // crear Libro
+            }
             //const imagen = (context == "admin") ? p.imagen : p.imagen = `/public${p.imagen}` // Esto es si lo cargamos desde LiveServer
             const imagen = p.imagen;
             const producto = new Product(

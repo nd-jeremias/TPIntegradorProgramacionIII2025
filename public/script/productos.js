@@ -2,6 +2,7 @@ import { getProducts } from './modules/getProducts.js'
 import { loadBtns, cargarProductos } from './UI/renderElements.js'
 import { updateCartBadge } from './UI/cartUI.js'
 
+let data;
 let actualPage = 1;  // empieza en 1;
 let totalPages = 0;
 const ITEMS_PER_PAGE = 9; // Hacer coincidir en renderElements
@@ -27,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     localStorage.setItem("carrito", '[]'); // Inicializamos un carrito vacio siempre que cargue la pagina
 
-    const data = await getProducts()
+    data = await getProducts()
     
     cargarProductos(data, PAGE)
     

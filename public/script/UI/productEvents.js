@@ -15,7 +15,7 @@ export function attachProductEvents(button, product) {
 
     if (button.classList.contains("add")) {
         button.addEventListener("click", () => {
-            agregarAlCarrito(product.id, product.tittle, product.price);
+            agregarAlCarrito(product);
             
             const card = button.closest(".card")
             modStock((card.querySelector(".stock")), product)

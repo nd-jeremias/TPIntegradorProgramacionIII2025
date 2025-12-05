@@ -1,12 +1,4 @@
 import { updateCartBadge } from '../UI/cartUI.js'
-/**
- * Guarda el array en LocalStorage
- * @param {Array} carrito Lista de productos cargados hasta el momento
- */
-function guardarCarrito(carrito) {
-    const carritoTxt = JSON.stringify(carrito);
-    localStorage.setItem("carrito", carritoTxt);
-}
 
 /**
  * Añade un producto al carrito de compras.
@@ -14,30 +6,26 @@ function guardarCarrito(carrito) {
  * @param {string} titulo - El título del producto.
  * @param {number} precio - El precio unitario del producto.
  */
-export function agregarAlCarrito(id, titulo, precio) {
+export function agregarAlCarrito(producto) {
     let carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
-
+    
     // Verificar si el producto ya está en el carrito
-    const productoExistente = carrito.find((item) => item.id === id);
+    const productoExistente = carrito.find((item) => item.producto.id === producto.id);
 
     if (productoExistente) {
         // Si existe, aumentamos la cantidad
         productoExistente.cantidad++;
-        console.log(`Se sumo un item mas de ${titulo}`);
+        console.log(`Se sumo un item mas id: ${producto.id}`);
     } else {
-        // Si no existe, creamos un nuevo objeto ítem y lo agregamos al array
-        const nuevoItem = {
-            id: id,
-            titulo: titulo,
-            precio: precio,
+        carrito.push({
+            producto: producto,
             cantidad: 1,
-        };
-        carrito.push(nuevoItem);
-        console.log(`Se añadió ${titulo} por primera vez al carrito.`);
+        })
+        console.log(`Se añadió producto id: ${producto.id} por primera vez al carrito.`);
     }
 
     // 2. Guardar el estado actual del carrito en localStorage
-    guardarCarrito(carrito);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
 
     // Actualizar contador del carrito
     updateCartBadge();
@@ -57,7 +45,9 @@ export function eliminarDelCarrito(id) {
 
         console.log(`Se quito un item id ${id}`);
     }
-    guardarCarrito(carrito);
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    
     // Actualizar contador del carrito
     updateCartBadge();
 }

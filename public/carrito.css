@@ -1,0 +1,22 @@
+.carrito-item {
+    border-radius: 12px;
+}
+
+.carrito-img {
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cantidad-input {
+    width: 80px;
+    margin: auto;
+}
+
+@media (max-width: 768px) {
+    .carrito-img {
+        height: 100px;
+        width: 100px;
+    }
+}

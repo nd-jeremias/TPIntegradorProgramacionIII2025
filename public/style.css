@@ -123,6 +123,7 @@ nav {
 }
 
 main {
+    color: var(--color-text-primary);
     flex: 1; /* Empuja el footer hacia abajo */
     background-color: var(--color-bg-secondary);
     padding: 1rem;

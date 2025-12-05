@@ -25,30 +25,67 @@
                 <ul class="lista-sin-estilos">
                     <li><a href="./index.html" class="nav-anchor">Bienvenida</a></li>
                     <li><a href="/ingresar.html" class="nav-anchor">Ingreso Administrador</a></li>
-                    <li>
-                        <!-- <a href="./carrito" class="nav-anchor">Carrito</a> -->
-                        <a href="/carrito.html" class="nav-anchor">
-                            Carrito
-                            <span id="cart-badge" class="badge d-none"></span>
-                        </a>
-                    </li>
+                    <li><a href="/carrito.html" class="nav-anchor">Carrito<span id="cart-badge" class="badge d-none"></span></a></li>
                 </ul>
             </nav>
         </header>
 
         <main>
-            <section id="container" class="container">
-                <!-- Aca cargar productos -->
-            </section>
+            <h2 class="mb-4">Carrito de Compras</h2>
+            <section id="container" class="container my-4">
 
-            <div id="navList-Container">
-                <!-- Aca cargan los botones de navegacion -->
-            </div>
+                    <div id="carrito_container">
+                        <div class="carrito-item card mb-3 p-3 shadow-sm">
+                            <div class="row align-items-center">
+                                <!-- C1: Imagen -->
+                                <div class="col-12 col-md-2 text-center">
+                                    <img src="https://via.placeholder.com/120" class="img-fluid carrito-img" alt="Producto">
+                                </div>
+                
+                                <!-- C2: Información -->
+                                <div class="col-12 col-md-3">
+                                    <h5 class="mb-1 fw-bold">Título del Producto</h5>
+                                    <p class="m-0 text-muted">Intérprete: Nombre</p>
+                                    <p class="m-0 text-muted">Año: 1999</p>
+                                    <p class="m-0 text-muted">Género: Rock</p>
+                                </div>
+                
+                                <!-- C3: Precio -->
+                                <div class="col-12 col-md-2 text-center">
+                                    <p class="m-0 fw-bold">$1500</p>
+                                </div>
+                
+                                <!-- C4: Cantidad -->
+                                <div class="col-12 col-md-2 text-center">
+                                    <input type="number" min="1" class="form-control cantidad-input" value="1">
+                                </div>
+                
+                                <!-- C5: Total + eliminar -->
+                                <div class="col-12 col-md-3 text-center">
+                                    <p class="fw-bold mb-1 total-item">$1500</p>
+                                    <button class="btn btn-outline-danger btn-sm">Eliminar</button>
+                                </div>
+                
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Confirmación -->
+                    <div class="text-end mt-4">
+                        <h4>Total General: <span id="total_general" class="fw-bold">$0</span></h4>
+                        <button class="btn btn-success btn-lg mt-3">Confirmar Compra</button>
+                    </div>
+                
+                </div>
+                
+
+            </section>
         </main>
 
         <footer>
             <h4>Nicolas Jeremias</h4>
         </footer>
+        <script src="/script/carrito.js"></script>
         <!-- SweetAlert2 -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <!-- Bootstrap -->
